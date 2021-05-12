@@ -1,9 +1,10 @@
 import './App.css';
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      
+    <div>
+      <h4>Peaders workshop</h4>
     </div>
   );
 }
