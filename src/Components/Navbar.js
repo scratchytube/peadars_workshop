@@ -13,7 +13,7 @@ const Navbar = () => {
                     <Link to='/'>
                         <img src={logo} alt="peaders workshop" />
                     </Link>
-                    <button type="button" className='nav-toggle'>{FaBars}</button>
+                    <button type="button" className='nav-toggle'><FaBars/></button>
                 </div>
                 <ul className="nav-links">
                     <li>
@@ -55,8 +55,8 @@ const NavContainer = styled.nav`
     }
   }
   .nav-toggle {
-    // background: transparent;
-    // border: transparent;
+    background: transparent;
+    border: transparent;
     color: var(--clr-primary-5);
     cursor: pointer;
     svg {
