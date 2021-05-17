@@ -40,6 +40,32 @@ export default Sidebar
 
 const SidebarContainer = styled.div`
 text-align: center;
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+.close-btn {
+    font-size: 2rem;
+    background: transparent;
+    border-color: transparent;
+    color: var(--clr-primary-5);
+    transition: var(--transition);
+    cursor: pointer;
+    color: var(--clr-red-dark);
+    margin-top: 0.2rem;
+}
+.close-btn:hover {
+    color: var(--clr-red-light)
+}
+.logo {
+    justify-self: center;
+    height: 160px;
+}
+.links {
+    margin-bottom: 2rem;
+}
 `
 
 
