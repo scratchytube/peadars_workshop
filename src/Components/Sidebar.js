@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import CartButtons from './CartButtons'
 import styled from 'styled-components'
@@ -6,7 +6,7 @@ import logo from '../assets/logo.svg'
 import { FaTimes } from 'react-icons/fa'
 
 const Sidebar = () => {
-    const isOpen = false
+    const [ isOpen, setIsOpen ] = useState(false)
     return (
         <SidebarContainer>
             <aside className={`${isOpen ? `sidebar show-sidebar` : 'sidebar'}`}>
@@ -107,5 +107,3 @@ text-align: center;
     }
 }
 `
-
-
