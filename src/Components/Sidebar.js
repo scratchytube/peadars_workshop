@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import CartButtons from './CartButtons'
 import styled from 'styled-components'
 import logo from '../assets/logo.svg'
 import { FaTimes } from 'react-icons/fa'
 
 const Sidebar = () => {
-    const [ isOpen, setIsOpen ] = useState(false)
+    const sidebar = useSelector((state) => state.product.isSideBar)
+
+
     return (
         <SidebarContainer>
-            <aside className={`${isOpen ? `sidebar show-sidebar` : 'sidebar'}`}>
+            <aside className={`${sidebar ? `sidebar show-sidebar` : 'sidebar'}`}>
                 <div className="sidebar-header">
                     <img src={logo} className="logo" alt="peaders workshop" />
                     <button className="close-btn" type='button'>

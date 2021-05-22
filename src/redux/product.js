@@ -7,7 +7,7 @@ const productSlice = createSlice({
     },
     reducers: {
         toggleSideBar: (state) => {
-           state.isSidebar = !state.isSidebar 
+            state.isSidebar = !state.isSidebar 
         }
     }
 })
