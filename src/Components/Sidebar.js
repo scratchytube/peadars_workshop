@@ -11,34 +11,31 @@ const Sidebar = () => {
     const dispatch = useDispatch()
     const sidebar = useSelector((state) => state.product.isSideBar)
 
-    const handleToggleSidebar = () => {
-        console.log('clicky')
-        const action = toggleSideBar()
-        dispatch(action)
-        console.log(sidebar)
+    const handleToggleSideBar = () => {
+        dispatch(toggleSideBar())
     }
 
 
     return (
         <SidebarContainer>
-            <aside className={`${sidebar ? `sidebar show-sidebar` : 'sidebar'}`}>
+            <aside className={`${ sidebar ? `sidebar show-sidebar` : 'sidebar' }`}>
                 <div className="sidebar-header">
                     <img src={logo} className="logo" alt="peaders workshop" />
-                    <button className="close-btn" type='button' onClick={handleToggleSidebar}>
+                    <button className="close-btn" type='button' onClick={handleToggleSideBar}>
                         <FaTimes />
                     </button>
                 </div>
                 <ul className="links">
-                    <li>
+                    <li onClick={handleToggleSideBar} >
                         <Link to="/">Home</Link>
                     </li>
-                    <li>
+                    <li onClick={handleToggleSideBar} >
                         <Link to='/about'>About</Link>
                     </li>
-                    <li>
+                    <li onClick={handleToggleSideBar} >
                         <Link to='/products'>The Goods</Link>
                     </li>
-                    <li>
+                    <li onClick={handleToggleSideBar} >
                         <Link to='/checkout'>Checkout</Link>
                     </li>
                 </ul>

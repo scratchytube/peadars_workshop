@@ -1,13 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { toggleSideBar } from '../redux/product'
 import styled from 'styled-components'
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa'
 
 
 const CartButtons = () => {
+    const dispatch = useDispatch()
+
+    const handleToggleSideBar = () => {
+        dispatch(toggleSideBar())
+    }
+
     return (
             <Wrapper className='cart-btn-wrapper'>
-                <Link to='/cart' className='cart-btn'>
+                <Link to='/cart' className='cart-btn' onClick={handleToggleSideBar} >
                     Cart 
                     <span className='cart-container'>
                         <FaShoppingCart />
