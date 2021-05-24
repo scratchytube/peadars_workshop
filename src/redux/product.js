@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 const productSlice = createSlice({
     name: 'product',
     initialState: {
-       isSideBar: false,
+       isSideBar: true,
     },
     reducers: {
-        toggleSideBar: (state) => {
-            state.isSidebar = !state.isSidebar 
+        toggleSideBar(state) {
+            state.isSideBar = !state.isSideBar 
         }
     }
 })

@@ -1,13 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleSideBar } from '../redux/product'
 import CartButtons from './CartButtons'
 import styled from 'styled-components'
 import logo from '../assets/logo.svg'
 import { FaTimes } from 'react-icons/fa'
 
 const Sidebar = () => {
+    const dispatch = useDispatch()
     const sidebar = useSelector((state) => state.product.isSideBar)
+
+    const handleToggleSidebar = () => {
+        console.log('clicky')
+        const action = toggleSideBar()
+        dispatch(action)
+        console.log(sidebar)
+    }
 
 
     return (
@@ -15,7 +24,7 @@ const Sidebar = () => {
             <aside className={`${sidebar ? `sidebar show-sidebar` : 'sidebar'}`}>
                 <div className="sidebar-header">
                     <img src={logo} className="logo" alt="peaders workshop" />
-                    <button className="close-btn" type='button'>
+                    <button className="close-btn" type='button' onClick={handleToggleSidebar}>
                         <FaTimes />
                     </button>
                 </div>
