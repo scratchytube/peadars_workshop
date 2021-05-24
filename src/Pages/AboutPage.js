@@ -1,21 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
 import workshopImg from '../assets/woodworking.jpg'
+import { PageHero } from '../Components'
 
 const AboutPage = () => {
     return (
-        <Wrapper className="page section section-center" >
-            <img src={workshopImg} alt="workshop" />
-            <article>
-                <div className="title">
-                    <h2>our story</h2>
-                    <div className="underline"></div>
-                </div>
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam laborum officia corporis nobis libero fugiat facere nostrum error, iure quas optio magnam corrupti et harum saepe distinctio, molestias adipisci. Dolorem!
-                </p>
-            </article>
-        </Wrapper>
+        <main>
+            <PageHero title='about'/>
+            <Wrapper className="page section section-center" >
+                <img src={workshopImg} alt="workshop" />
+                <article>
+                    <div className="title">
+                        <h2>our story</h2>
+                        <div className="underline"></div>
+                    </div>
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam laborum officia corporis nobis libero fugiat facere nostrum error, iure quas optio magnam corrupti et harum saepe distinctio, molestias adipisci. Dolorem!
+                    </p>
+                </article>
+            </Wrapper>
+        </main>
     )
 }
 
