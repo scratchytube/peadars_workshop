@@ -5,7 +5,6 @@ import CartButtons from './CartButtons'
 import PageHero from './PageHero'
 import Hero from './Hero'
 import Contact from './Contact'
-import Services from './Services'
 import Featured from './FeaturedProducts'
 
 export {
@@ -16,6 +15,5 @@ export {
     PageHero,
     Hero,
     Contact,
-    Services,
     Featured,
 }
