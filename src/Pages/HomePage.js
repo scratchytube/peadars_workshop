@@ -1,10 +1,14 @@
 import React from 'react'
+import { Hero, Featured, Services, Contact } from '../Components'
 
 const HomePage = () => {
     return (
-        <div>
-            <h4>home page</h4>
-        </div>
+        <main>
+            <Hero />
+            <Featured />
+            <Services />
+            <Contact />
+        </main>
     )
 }
 
