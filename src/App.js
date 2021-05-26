@@ -1,3 +1,6 @@
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { productsFetch } from './redux/product'
 import { Route, Switch } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './Components'
 import { 
@@ -12,6 +15,16 @@ import {
 } from './Pages'
 
 const App = () => {
+  const dispatch = useDispatch()
+
+  // products fetch
+  useEffect(() => {
+    fetch('https://course-api.com/react-store-products')
+    .then((r) => r.json())
+    .then((productsArray) => {
+      dispatch(productsFetch(productsArray))
+    })
+  }, [dispatch])
 
   return (
     <div>
