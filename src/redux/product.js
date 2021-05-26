@@ -18,10 +18,10 @@ const productSlice = createSlice({
             // state.productsLoading = true
         },
         featuredProductsFetch(state, action) {
-            state.featuredProducts = 
+            state.featuredProducts = action.payload.filter((product) => product.featured === true)
         }
     }
 })
 
-export const { toggleSideBar, productsFetch } = productSlice.actions
+export const { toggleSideBar, productsFetch, featuredProductsFetch } = productSlice.actions
 export default productSlice.reducer
