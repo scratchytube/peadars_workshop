@@ -8,6 +8,9 @@ const productSlice = createSlice({
        productsError: false,
        products: [],
        featuredProducts: [],
+       singleProductLoading: false,
+       singleProductError: false,
+       singleProduct: {},
     },
     reducers: {
         toggleSideBar(state) {
@@ -19,9 +22,12 @@ const productSlice = createSlice({
         },
         featuredProductsFetch(state, action) {
             state.featuredProducts = action.payload.filter((product) => product.featured === true)
+        },
+        singleProduct(state, action) {
+            state.singleProduct = action.payload
         }
     }
 })
 
-export const { toggleSideBar, productsFetch, featuredProductsFetch } = productSlice.actions
+export const { toggleSideBar, productsFetch, featuredProductsFetch, singleProduct } = productSlice.actions
 export default productSlice.reducer
