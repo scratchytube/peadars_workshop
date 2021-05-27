@@ -1,4 +1,5 @@
 import React from 'react'
+import { formatPrice } from '../utils/helpers'
 import styled from 'styled-components'
 import { FaSearch } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
@@ -15,7 +16,7 @@ const Product = ({ productObjects }) => {
             </div>
             <footer>
                 <h5>{name}</h5>
-                <p>{price}</p>
+                <p>{ formatPrice(price) }</p>
             </footer>
         </Wrapper>
     )
