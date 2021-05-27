@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { productsFetch, featuredProductsFetch } from './redux/product'
 import { Route, Switch } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './Components'
@@ -34,6 +34,8 @@ const App = () => {
       dispatch(featuredProductsFetch(featuredProductsArray))
     })
   }, [dispatch])
+
+  
 
   return (
     <div>
