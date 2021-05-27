@@ -8,6 +8,7 @@ function SingleProductPage() {
     const dispatch = useDispatch()
     const { id } = useParams()
     const productObject = useSelector((state) => state.product.singleProduct)
+    // const singleLoading = useSelector((state) => state.product.singleProductLoading)
 
     // single product fetch
     useEffect(() => {
@@ -19,6 +20,7 @@ function SingleProductPage() {
     }, [id, dispatch])
 
     console.log(productObject)
+    // console.log(singleLoading)
 
 
     return (
