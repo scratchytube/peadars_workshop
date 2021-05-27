@@ -89,7 +89,7 @@ p {
     }
 }
 @media (min-width: 1280px) {
-    padding: 15rem 0;
+    padding: 10rem 0;
 }
 
 `

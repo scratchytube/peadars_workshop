@@ -8,12 +8,12 @@ const Hero = () => {
     return (
         <Wrapper className='section-center'>
             <article className="content">
-                <h1>i make wood now</h1>
+                <h1>Welcome</h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum autem incidunt dicta assumenda omnis. Culpa, ullam repudiandae? Dolor, ab accusantium.
+                    Hi, my name is Peader. I'm Irish. I live in Texas with my beautiful family. I make beautiful wood things me thinks! Sláinte!
                 </p>
                 <Link to='/products' className='btn hero-btn'>
-                    siopa
+                    Shop
                 </Link>
             </article>
             <article className='img-container'>
