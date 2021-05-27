@@ -3,12 +3,24 @@ import { useParams, useHistory, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { singleProduct } from '../redux/product'
 import styled from 'styled-components'
+import { PageHero } from '../Components'
 
 function SingleProductPage() {
     const dispatch = useDispatch()
     const { id } = useParams()
     const productObject = useSelector((state) => state.product.singleProduct)
-    // const singleLoading = useSelector((state) => state.product.singleProductLoading)
+    const { 
+        name, 
+        price, 
+        description, 
+        stock, 
+        stars, 
+        reviews, 
+        id:sku, 
+        company, 
+        images 
+    } = productObject
+    
 
     // single product fetch
     useEffect(() => {
@@ -20,14 +32,17 @@ function SingleProductPage() {
     }, [id, dispatch])
 
     console.log(productObject)
-    // console.log(singleLoading)
 
 
     return (
-        <div>
-            <h4>single product page</h4>
-        </div>
+        <Wrapper>
+            <PageHero title={name} product />
+        </Wrapper>
     )
 }
 
 export default SingleProductPage
+
+const Wrapper = styled.main`
+
+`
