@@ -7,7 +7,7 @@ const Contact = () => {
             <div className="section-center">
                 <h3>Join my newsletter</h3>
                 <div className="content">
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, officiis! Asperiores sit corrupti deserunt, aperiam non cupiditate porro? Tempora, adipisci.</p>
+                    <p>I'll send something out once a month maybe!</p>
                     <form 
                     className="contact-form"
                     action="https://formspree.io/f/xgerkoer"
