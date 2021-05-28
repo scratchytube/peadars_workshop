@@ -3,7 +3,7 @@ import { useParams, useHistory, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { singleProduct } from '../redux/product'
 import styled from 'styled-components'
-import { ProductImages, PageHero, Stars } from '../Components'
+import { ProductImages, PageHero, Stars, AddToCart } from '../Components'
 import { formatPrice } from '../utils/helpers'
 
 function SingleProductPage() {
@@ -16,9 +16,8 @@ function SingleProductPage() {
         description, 
         stock, 
         stars, 
-        reviews, 
-        company, 
-        images 
+        reviews,
+        images,
     } = productObject
     
 
@@ -47,8 +46,11 @@ function SingleProductPage() {
                         <h5 className='price'>{formatPrice(price)}</h5>
                         <p className='desc'> {description}</p>
                         <p className='info'>
-                            <span>Available</span>
+                            <span>Available : </span>
+                            {stock > 0 ? 'In stock' : 'out of stock'}
                         </p>
+                        <hr />
+                        { stock > 0 && <AddToCart /> }
                     </section>
                 </div>
             </div>
