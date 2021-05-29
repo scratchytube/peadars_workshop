@@ -44,7 +44,7 @@ function SingleProductPage() {
                             {stock > 0 ? 'In stock' : 'out of stock'}
                         </p>
                         <hr />
-                        { stock > 0 && <AddToCart /> }
+                        { stock > 0 && <AddToCart product={productObject} /> }
                     </section>
                 </div>
             </div>
