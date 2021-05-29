@@ -7,7 +7,6 @@ import Hero from './Hero'
 import Contact from './Contact'
 import Featured from './FeaturedProducts'
 import ProductImages from './ProductImages'
-import Stars from './Stars'
 import AddToCart from './AddToCart'
 
 export {
@@ -20,6 +19,5 @@ export {
     Contact,
     Featured,
     ProductImages,
-    Stars,
     AddToCart,
 }
