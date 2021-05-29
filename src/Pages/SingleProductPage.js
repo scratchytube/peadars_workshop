@@ -28,9 +28,6 @@ function SingleProductPage() {
         })
     }, [id, dispatch])
 
-    console.log(productObject)
-
-
     return (
         <Wrapper>
             <PageHero title={name} product />
@@ -60,7 +57,7 @@ export default SingleProductPage
 const Wrapper = styled.main`
 .product-center {
     display: grid;
-    gap: 4rem;
+    gap: 2rem;
     margin-top: 2rem;
 }
 .price {
