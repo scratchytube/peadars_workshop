@@ -8,6 +8,9 @@ import Contact from './Contact'
 import Featured from './FeaturedProducts'
 import ProductImages from './ProductImages'
 import AddToCart from './AddToCart'
+import Filters from './Filters'
+import Sort from './Sort'
+import ProductList from './ProductList'
 
 export {
     Navbar,
@@ -20,4 +23,7 @@ export {
     Featured,
     ProductImages,
     AddToCart,
+    Filters,
+    Sort,
+    ProductList,
 }
