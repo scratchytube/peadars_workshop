@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { productsFetch, featuredProductsFetch } from './redux/product'
+import { allProducts, featuredProductsFetch, filteredProducts } from './redux/product'
 import { Route, Switch } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './Components'
 import { 
@@ -22,9 +22,18 @@ const App = () => {
     fetch('https://course-api.com/react-store-products')
     .then((r) => r.json())
     .then((productsArray) => {
-      dispatch(productsFetch(productsArray))
+      dispatch(allProducts(productsArray))
     })
   }, [dispatch])
+
+  // filtered products
+  useEffect(() => {
+    fetch('https://course-api.com/react-store-products')
+    .then((r) => r.json())
+    .then((filteredArray) => {
+      dispatch(filteredProducts(filteredArray))
+    })
+  }, [])
 
   // featured products fetch
   useEffect(() => {
