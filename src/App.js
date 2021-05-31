@@ -33,7 +33,7 @@ const App = () => {
     .then((filteredArray) => {
       dispatch(filteredProducts(filteredArray))
     })
-  }, [])
+  }, [dispatch])
 
   // featured products fetch
   useEffect(() => {

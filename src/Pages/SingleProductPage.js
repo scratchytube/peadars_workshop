@@ -3,7 +3,7 @@ import { useParams, useHistory, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { singleProduct } from '../redux/product'
 import styled from 'styled-components'
-import { ProductImages, PageHero, Stars, AddToCart } from '../Components'
+import { ProductImages, PageHero, AddToCart } from '../Components'
 import { formatPrice } from '../utils/helpers'
 
 function SingleProductPage() {

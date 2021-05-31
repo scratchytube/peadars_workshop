@@ -1,10 +1,13 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import GridView from './GridView'
+import ListView from './ListView'
 
 const ProductList = () => {
+    const products = useSelector(state => state.product.filtered_products)
+
     return (
-        <div>
-            <h4>product list</h4>
-        </div>
+        <GridView products={products}>product list</GridView>
     )
 }
 
