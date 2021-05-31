@@ -12,6 +12,7 @@ const productSlice = createSlice({
     //    singleProductLoading: false,
     //    singleProductError: false,
        singleProduct: {},
+       gridView: false,
     },
     reducers: {
         toggleSideBar(state) {

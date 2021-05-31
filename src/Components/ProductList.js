@@ -5,6 +5,8 @@ import ListView from './ListView'
 
 const ProductList = () => {
     const products = useSelector(state => state.product.filtered_products)
+    const gridView = useSelector(state => state.product.gridView)
+    console.log(gridView)
 
     return (
         <GridView products={products}>product list</GridView>
