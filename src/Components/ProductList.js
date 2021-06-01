@@ -18,9 +18,9 @@ const ProductList = () => {
     }
 
     return (
-
-        // { isGridView ? <GridView /> : <ListView /> }
-        <GridView products={products}>product list</GridView>
+        <GridView products={products}>
+            product list
+        </GridView>
     )
 }
 
