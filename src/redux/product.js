@@ -18,6 +18,9 @@ const productSlice = createSlice({
         toggleSideBar(state) {
             state.isSideBar = !state.isSideBar 
         },
+        toggleView(state) {
+            state.isGridView = !state.isGridView
+        },
         allProducts(state, action) {
             state.products = action.payload
             // state.productsLoading = true
@@ -30,11 +33,9 @@ const productSlice = createSlice({
         },
         singleProduct(state, action) {
             state.singleProduct = action.payload
-            
-            
         }
     }
 })
 
-export const { toggleSideBar, allProducts, filteredProducts, featuredProductsFetch, singleProduct } = productSlice.actions
+export const { toggleSideBar, allProducts, filteredProducts, featuredProductsFetch, singleProduct, toggleView } = productSlice.actions
 export default productSlice.reducer

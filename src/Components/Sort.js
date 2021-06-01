@@ -1,19 +1,25 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleView } from '../redux/product'
 import styled from 'styled-components'
 import { BsFillGridFill, BsList } from 'react-icons/bs'
 
 const Sort = () => {
+    const dispatch = useDispatch()
     const products = useSelector(state => state.product.filtered_products)
     const theGridView = useSelector(state => state.product.isGridView)
+
+    const toggleGridAndListView = () => {
+        dispatch(toggleView())
+    }
 
     return (
         <Wrapper>
             <div className="btn-container">
-                <button type="button" className={`${ theGridView ? 'active' : null }`} >
+                <button onClick={toggleGridAndListView} type="button" className={`${ theGridView ? 'active' : null }`} >
                     <BsFillGridFill />
                 </button>
-                <button type="button" className={`${ theGridView ? null : 'active' }`}>
+                <button onClick={toggleGridAndListView} type="button" className={`${ theGridView ? null : 'active' }`}>
                     <BsList />
                 </button>
             </div>
