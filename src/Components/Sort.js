@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { filteredProducts, sorter } from '../redux/product'
+import { filteredProducts, sorter, sortProducts } from '../redux/product'
 import { toggleView } from '../redux/product'
 import styled from 'styled-components'
 import { BsFillGridFill, BsList } from 'react-icons/bs'
@@ -11,12 +11,24 @@ const Sort = () => {
     const theGridView = useSelector(state => state.product.isGridView)
     const sort = useSelector(state => state.product.sort)
 
-    const updateSort = (e) => {
-        const value = e.target.value
-        dispatch(sorter(value))
+    useEffect (() => {
+        dispatch(sortProducts)
+    }, [dispatch, products, sort])
+
+    const handleSort = (e) => {
+        dispatch(sorter(e.target.value))
+
+        if (sort === "price-lowest") {
+            const priceLowestFirst = [...products].sort((a,b) => b.price - a.price)
+            dispatch(filteredProducts(priceLowestFirst))
+        }
+        if (sort === "price-highest") {
+            const priceHighestFirst = [...products].sort((a,b) => a.price - b.price)
+            dispatch(filteredProducts(priceHighestFirst))
+        }
+
     }
 
-    console.log(sort)
 
 
 
@@ -40,7 +52,7 @@ const Sort = () => {
                 id="sort" 
                 className='sort-input'
                 value={sort}
-                onChange={updateSort}
+                onChange={(e) => dispatch(sorter(e.target.value))}
                 >
                     <option value="price-lowest">price (lowest)</option>
                     <option value="price-highest">price (highest)</option>

@@ -25,6 +25,9 @@ const productSlice = createSlice({
         sorter(state, action) {
             state.sort = action.payload
         },
+        sortProducts(state, action) {
+
+        },
         allProducts(state, action) {
             state.products = action.payload
             // state.productsLoading = true
@@ -49,5 +52,6 @@ export const {
     singleProduct, 
     toggleView, 
     sorter,
+    sortProducts,
 } = productSlice.actions
 export default productSlice.reducer
