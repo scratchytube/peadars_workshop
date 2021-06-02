@@ -14,6 +14,14 @@ const productSlice = createSlice({
     //    singleProductLoading: false,
     //    singleProductError: false,
        singleProduct: {},
+       filters:{
+           text: '',
+           category: 'all',
+           min_price: 0,
+           max_price: 0,
+           price: 0,
+           shipping: false,
+       }
     },
     reducers: {
         toggleSideBar(state) {

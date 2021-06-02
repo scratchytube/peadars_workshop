@@ -1,19 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { filteredProducts, sorter } from '../redux/product'
 import { toggleView } from '../redux/product'
-import styled from 'styled-components'
 import { BsFillGridFill, BsList } from 'react-icons/bs'
+import styled from 'styled-components'
 
 const Sort = () => {
     const dispatch = useDispatch()
     const products = useSelector(state => state.product.filtered_products)
     const theGridView = useSelector(state => state.product.isGridView)
     const sort = useSelector(state => state.product.sort)
-
-    // useEffect (() => {
-    //     dispatch(sortProducts)
-    // }, [dispatch, products, sort])n
 
     const handleSort = (e) => {
         const value = e.target.value
@@ -41,9 +37,6 @@ const Sort = () => {
         }
 
     }
-
-
-
 
     return (
         <Wrapper>
