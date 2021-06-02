@@ -17,7 +17,6 @@ const Sort = () => {
 
     const handleSort = (e) => {
         const value = e.target.value
-        console.log(value)
         dispatch(sorter(value))
 
         if (value === "price-lowest") {
@@ -27,6 +26,18 @@ const Sort = () => {
         if (value === "price-highest") {
             const priceHighestFirst = [...products].sort((a,b) => b.price - a.price )
             dispatch(filteredProducts(priceHighestFirst))
+        }
+        if (value === "name-a") {
+            const alphabeticalOrder = [...products].sort((a,b) => {
+                return a.name.localeCompare(b.name)
+            })
+            dispatch(filteredProducts(alphabeticalOrder))
+        }
+        if (value === "name-z") {
+            const reverseAlphabeticalOrder = [...products].sort((a,b) => {
+                return b.name.localeCompare(a.name)
+            })
+            dispatch(filteredProducts(reverseAlphabeticalOrder))
         }
 
     }
