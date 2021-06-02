@@ -4,6 +4,8 @@ const productSlice = createSlice({
     name: 'product',
     initialState: {
        isSideBar: false,
+       isGridView: true,
+       sort: 'name-a',
     //    productsLoading: false,
     //    productsError: false,
        products: [],
@@ -12,7 +14,6 @@ const productSlice = createSlice({
     //    singleProductLoading: false,
     //    singleProductError: false,
        singleProduct: {},
-       isGridView: true,
     },
     reducers: {
         toggleSideBar(state) {
@@ -20,6 +21,9 @@ const productSlice = createSlice({
         },
         toggleView(state) {
             state.isGridView = !state.isGridView
+        },
+        sorter(state, action) {
+            state.sort = action.payload
         },
         allProducts(state, action) {
             state.products = action.payload
@@ -37,5 +41,13 @@ const productSlice = createSlice({
     }
 })
 
-export const { toggleSideBar, allProducts, filteredProducts, featuredProductsFetch, singleProduct, toggleView } = productSlice.actions
+export const { 
+    toggleSideBar, 
+    allProducts, 
+    filteredProducts, 
+    featuredProductsFetch, 
+    singleProduct, 
+    toggleView, 
+    sorter,
+} = productSlice.actions
 export default productSlice.reducer

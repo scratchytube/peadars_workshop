@@ -1,45 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { filteredProducts } from '../redux/product'
+import { filteredProducts, sorter } from '../redux/product'
 import { toggleView } from '../redux/product'
 import styled from 'styled-components'
 import { BsFillGridFill, BsList } from 'react-icons/bs'
 
 const Sort = () => {
-    const [filterSort, setFilterSort] = useState('name-a')
     const dispatch = useDispatch()
     const products = useSelector(state => state.product.filtered_products)
     const theGridView = useSelector(state => state.product.isGridView)
+    const sort = useSelector(state => state.product.sort)
 
-    const toggleGridAndListView = () => {
-        dispatch(toggleView())
+    const updateSort = (e) => {
+        const value = e.target.value
+        dispatch(sorter(value))
     }
 
-    const sorter = () => {
-    if (filterSort === 'name-a') {
-        console.log('its me a-z!')
-    }
-    if (filterSort === 'name-z') {
-        console.log('its me z-a!')
-    }
-    if (filterSort === 'price-lowest') {
-        const sortedByLowestPrice = [...products].sort((a,b) => (
-            a.price - b.price
-        ))
-        dispatch(filteredProducts(sortedByLowestPrice))
-    }
-    if (filterSort === 'price-highest') {
-        console.log('its me high-low!')
-    }
-}
+    console.log(sort)
+
+
 
     return (
         <Wrapper>
             <div className="btn-container">
-                <button onClick={toggleGridAndListView} type="button" className={`${ theGridView ? 'active' : null }`} >
+                <button onClick={() => dispatch(toggleView())} type="button" className={`${ theGridView ? 'active' : null }`} >
                     <BsFillGridFill />
                 </button>
-                <button onClick={toggleGridAndListView} type="button" className={`${ theGridView ? null : 'active' }`}>
+                <button onClick={() => dispatch(toggleView())} type="button" className={`${ theGridView ? null : 'active' }`}>
                     <BsList />
                 </button>
             </div>
@@ -52,8 +39,8 @@ const Sort = () => {
                 <select name="sort" 
                 id="sort" 
                 className='sort-input'
-                value={filterSort}
-                onChange={(e) => setFilterSort(e.target.value)}
+                value={sort}
+                onChange={updateSort}
                 >
                     <option value="price-lowest">price (lowest)</option>
                     <option value="price-highest">price (highest)</option>
