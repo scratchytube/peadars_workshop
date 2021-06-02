@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { filteredProducts } from '../redux/product'
 import { toggleView } from '../redux/product'
 import styled from 'styled-components'
 import { BsFillGridFill, BsList } from 'react-icons/bs'
@@ -13,6 +14,24 @@ const Sort = () => {
     const toggleGridAndListView = () => {
         dispatch(toggleView())
     }
+
+    const sorter = () => {
+    if (filterSort === 'name-a') {
+        console.log('its me a-z!')
+    }
+    if (filterSort === 'name-z') {
+        console.log('its me z-a!')
+    }
+    if (filterSort === 'price-lowest') {
+        const sortedByLowestPrice = [...products].sort((a,b) => (
+            a.price - b.price
+        ))
+        dispatch(filteredProducts(sortedByLowestPrice))
+    }
+    if (filterSort === 'price-highest') {
+        console.log('its me high-low!')
+    }
+}
 
     return (
         <Wrapper>
