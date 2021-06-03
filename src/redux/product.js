@@ -34,6 +34,10 @@ const productSlice = createSlice({
             state.sort = action.payload
         },
         allProducts(state, action) {
+            let maxPrice = action.payload.map((p) => p.price)
+            maxPrice = Math.max(...maxPrice)
+            state.filters.max_price = maxPrice
+            state.filters.price = maxPrice
             state.products = action.payload
             // state.productsLoading = true
         },
