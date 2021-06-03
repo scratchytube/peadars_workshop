@@ -48,8 +48,8 @@ const productSlice = createSlice({
             state.filtered_products = action.payload
         },
         updateFilters(state, action) {
-            // const { name, value } = action.payload
-            state.filters.text = action.payload
+            const { name, value } = action.payload
+            return {...state,filters:{...state.filters,[name]: value}}
         },
         featuredProductsFetch(state, action) {
             state.featuredProducts = action.payload.filter((product) => product.featured === true)

@@ -12,12 +12,10 @@ const Filters = () => {
     const { text, category, min_price, max_price, price } = filters 
 
     const handleUpdateFilters = (e) => {
-        // const name = e.target.name
+        const name = e.target.name
         const value = e.target.value
-        dispatch(updateFilters(value))
-        
+        dispatch(updateFilters({name, value}))
     }
-    console.log(text)
 
     const handleClearFilters = () => {
 
@@ -28,7 +26,8 @@ const Filters = () => {
            <div className="content">
                <form onSubmit={(e) => e.preventDefault()}>
                    <div className="form-control">
-                       <input type="text" 
+                       <input 
+                       type="text" 
                        name='text' 
                        placeholder='search' 
                        className='search-input' 
