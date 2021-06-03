@@ -9,7 +9,7 @@ const Filters = () => {
     const dispatch = useDispatch()
 
     const filters = useSelector(state => state.product.filters)
-    const { text, category, min_price, max_price, price, shipping } = filters 
+    const { text, category, min_price, max_price, price } = filters 
 
     const handleUpdateFilters = (e) => {
         // const name = e.target.name
@@ -34,6 +34,18 @@ const Filters = () => {
                        className='search-input' 
                        value={text} 
                        onChange={handleUpdateFilters} />
+                   </div>
+                   <div className="form-control">
+                       <h5>categories</h5>
+                       <div>
+                        <button>All</button>
+                        <button>Bedroom</button>
+                        <button>Office</button>
+                        <button>Kitchen</button>
+                        <button>Living Room</button>
+                        <button>Kids</button>
+                        <button>Dining</button>
+                       </div>
                    </div>
                </form>
            </div>
