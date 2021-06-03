@@ -42,7 +42,15 @@ const productSlice = createSlice({
             // state.productsLoading = true
         },
         filteredProducts(state, action) {
+            let maxPrice = action.payload.map((p) => p.price)
+            maxPrice = Math.max(...maxPrice)
+            state.filters.max_price = maxPrice
+            state.filters.price = maxPrice
             state.filtered_products = action.payload
+        },
+        updateFilters(state, action) {
+            // const { name, value } = action.payload
+            state.filters.text = action.payload
         },
         featuredProductsFetch(state, action) {
             state.featuredProducts = action.payload.filter((product) => product.featured === true)
@@ -61,5 +69,6 @@ export const {
     singleProduct, 
     toggleView, 
     sorter,
+    updateFilters,
 } = productSlice.actions
 export default productSlice.reducer

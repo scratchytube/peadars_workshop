@@ -1,18 +1,48 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateFilters } from '../redux/product'
+import { formatPrice } from '../utils/helpers'
+import styled from 'styled-components'
+import { FaCheck } from 'react-icons/fa'
 
 const Filters = () => {
+    const dispatch = useDispatch()
 
-    const max_price = useSelector(state => state.product.filters.max_price)
-    const price = useSelector(state => state.product.filters.price)
+    const filters = useSelector(state => state.product.filters)
+    const { text, category, min_price, max_price, price, shipping } = filters 
 
-    console.log(max_price, price)
+    const handleUpdateFilters = (e) => {
+        // const name = e.target.name
+        const value = e.target.value
+        dispatch(updateFilters(value))
+        
+    }
+    console.log(text)
+
+    const handleClearFilters = () => {
+
+    }
 
     return (
-        <div>
-            <h4>filters</h4>
-        </div>
+       <Wrapper>
+           <div className="content">
+               <form onSubmit={(e) => e.preventDefault()}>
+                   <div className="form-control">
+                       <input type="text" 
+                       name='text' 
+                       placeholder='search' 
+                       className='search-input' 
+                       value={text} 
+                       onChange={handleUpdateFilters} />
+                   </div>
+               </form>
+           </div>
+       </Wrapper>
     )
 }
 
 export default Filters
+
+const Wrapper = styled.section`
+
+`
