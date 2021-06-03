@@ -8,6 +8,7 @@ import { FaCheck } from 'react-icons/fa'
 const Filters = () => {
     const dispatch = useDispatch()
 
+    const allProducts = useSelector(state => state.product.products)
     const filters = useSelector(state => state.product.filters)
     const { text, category, min_price, max_price, price } = filters 
 
@@ -20,6 +21,16 @@ const Filters = () => {
     const handleClearFilters = () => {
 
     }
+
+    const getUniqueValuesFromProducts = (allTheProducts) => {
+        const unique = allTheProducts.map(item => item['category'])
+        return ['all', ...new Set(unique)]
+    }
+
+    const categories = getUniqueValuesFromProducts(allProducts)
+
+    console.log(categories)
+
 
     return (
        <Wrapper>
@@ -37,13 +48,9 @@ const Filters = () => {
                    <div className="form-control">
                        <h5>categories</h5>
                        <div>
-                        <button>All</button>
-                        <button>Bedroom</button>
-                        <button>Office</button>
-                        <button>Kitchen</button>
-                        <button>Living Room</button>
-                        <button>Kids</button>
-                        <button>Dining</button>
+                        {categories.map((c, index) => {
+                            return <button key={index}>{c}</button>
+                        })}
                        </div>
                    </div>
                </form>
