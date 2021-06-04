@@ -13,8 +13,14 @@ const Filters = () => {
     const { text, category, min_price, max_price, price } = filters 
 
     const handleUpdateFilters = (e) => {
-        const name = e.target.name
-        const value = e.target.value
+        let name = e.target.name
+        let value = e.target.value
+        if (name === 'category') {
+            value = e.target.textContent
+        }
+        if (name === 'price') {
+            value = parseInt(value)
+        }
         dispatch(updateFilters({name, value}))
     }
 
@@ -26,10 +32,16 @@ const Filters = () => {
         const unique = allTheProducts.map(item => item['category'])
         return ['all', ...new Set(unique)]
     }
-
     const categories = getUniqueValuesFromProducts(allProducts)
-
-    console.log(categories)
+    
+    const renderCategoryButtons = categories.map((c, index) => {
+        return <button 
+        key={index}
+        name='category'
+        onClick={handleUpdateFilters}
+        className={`${ category === c.toLowerCase() ? 'active' : null }`}
+        >{c}</button>
+    })
 
 
     return (
@@ -48,10 +60,22 @@ const Filters = () => {
                    <div className="form-control">
                        <h5>categories</h5>
                        <div>
-                        {categories.map((c, index) => {
-                            return <button key={index}>{c}</button>
-                        })}
+                        {renderCategoryButtons}
                        </div>
+                   </div>
+                   <div className="form-control">
+                       <h5>price</h5>
+                       <p className="price">
+                           {formatPrice(price)}
+                       </p>
+                       <input 
+                       type="range" 
+                       name="price" 
+                       onChange={handleUpdateFilters} 
+                       min={min_price} 
+                       max={max_price} 
+                       value={price}
+                       />
                    </div>
                </form>
            </div>
