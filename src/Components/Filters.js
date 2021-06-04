@@ -87,5 +87,55 @@ const Filters = () => {
 export default Filters
 
 const Wrapper = styled.section`
+.form-control {
+    margin-bottom: 1.25rem;
+    h5 {
+        margin-bottom: 0.5rem;
+    }
+}
+.search-input {
+    padding: 0.5rem;
+    background: var(--clr-primary-10);
+    border-radius: var(--radius);
+    border-color: transparent;
+    letter-spacing: var(--spacing);
+}
+.search-input::placeholder {
+    text-transform: capitalize;
+}
+
+button {
+    display: block;
+    margin: 0.25em 0;
+    text-transform: capitalize;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    letter-spacing: var(--spacing);
+    color: var(--clr-grey-5);
+    cursor: pointer;
+}
+.active {
+    border-color: var(--clr-grey-5);
+}
+
+.price {
+    margin-bottom: 0.25rem;
+}
+
+.clear-btn {
+    background: var(--clr-red-dark);
+    color: var(--clr-white);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius)
+}
+
+@media (min-width: 768px) {
+    .content {
+        position: sticky;
+        top: 1rem;
+    }
+}
+
 
 `
