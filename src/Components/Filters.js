@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateFilters, clearFilters } from '../redux/product'
+import { filteredProducts, updateFilters, clearFilters } from '../redux/product'
 import { formatPrice } from '../utils/helpers'
 import styled from 'styled-components'
 import { FaCheck } from 'react-icons/fa'
@@ -15,6 +15,11 @@ const Filters = () => {
     const handleUpdateFilters = (e) => {
         let name = e.target.name
         let value = e.target.value
+        
+        if (name === "text") {
+            const filterByText = [...allProducts].filter(product => product.name.toLowerCase().includes(text))
+                dispatch(filteredProducts(filterByText))
+        }
         if (name === 'category') {
             value = e.target.textContent
         }
