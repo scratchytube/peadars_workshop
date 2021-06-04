@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Product from './Product'
 import styled from 'styled-components'
 
@@ -19,6 +20,9 @@ const FeaturedProducts = () => {
                   return  <Product key={product.id} productObjects={product} />
                 })}
             </div>
+            <Link to='/products' className='btn' >
+                all products
+            </Link>
         </Wrapper>
     )
 }
@@ -38,7 +42,7 @@ background: var(--clr-grey-10);
 .btn {
     display: block;
     width: 148px;
-    margin: 0 auto;
+    margin: 0  auto;
     text-align: center;
 }
 @media (min-width: 576px) {
