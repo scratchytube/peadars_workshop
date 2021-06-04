@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateFilters } from '../redux/product'
+import { updateFilters, clearFilters } from '../redux/product'
 import { formatPrice } from '../utils/helpers'
 import styled from 'styled-components'
 import { FaCheck } from 'react-icons/fa'
@@ -25,7 +25,7 @@ const Filters = () => {
     }
 
     const handleClearFilters = () => {
-
+        dispatch(clearFilters())
     }
 
     const getUniqueValuesFromProducts = (allTheProducts) => {
@@ -78,6 +78,7 @@ const Filters = () => {
                        />
                    </div>
                </form>
+               <button type='button' className='clear-btn' onClick={handleClearFilters} >clear filters</button>
            </div>
        </Wrapper>
     )

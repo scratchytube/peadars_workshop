@@ -51,6 +51,17 @@ const productSlice = createSlice({
             const { name, value } = action.payload
             return {...state,filters:{...state.filters,[name]: value}}
         },
+        clearFilters(state) {
+            return {
+                ...state,
+                filters: {
+                    ...state.filters,
+                    text: '',
+                    category: 'all',
+                    price: state.filters.max_price,
+                }
+            }
+        },
         featuredProductsFetch(state, action) {
             state.featuredProducts = action.payload.filter((product) => product.featured === true)
         },
@@ -69,5 +80,6 @@ export const {
     toggleView, 
     sorter,
     updateFilters,
+    clearFilters,
 } = productSlice.actions
 export default productSlice.reducer
