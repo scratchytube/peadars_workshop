@@ -48,10 +48,8 @@ const productSlice = createSlice({
             state.filtered_products = action.payload
         },
         updateFilters(state, action) {
-           
             const { name, value } = action.payload
             state.filters[name] = value
-            // return {...state,filters:{...state.filters,[name]: value}}
         },
         clearFilters(state) {
             return {

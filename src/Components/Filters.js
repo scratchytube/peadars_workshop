@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { filteredProducts, updateFilters, clearFilters } from '../redux/product'
 import { formatPrice } from '../utils/helpers'
@@ -17,17 +17,18 @@ const Filters = () => {
         dispatch(updateFilters({name, value}))
         
         if (name === 'category') {
+            // we need the textContent from the button
             value = e.target.textContent
         }
         if (name === 'price') {
             value = parseInt(value)
         }
     }
-    
-    const filterByText = [...allProducts].filter((product) => (product.name.toLowerCase().includes(text)))
+
+    useEffect(() => {
+        const filterByText = [...allProducts].filter((product) => (product.name.toLowerCase().includes(text)))
         dispatch(filteredProducts(filterByText))
-    
-    console.log(text)
+    }, [dispatch, allProducts, text])
 
     const handleClearFilters = () => {
         dispatch(clearFilters())

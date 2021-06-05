@@ -9,7 +9,7 @@ const ProductList = () => {
 
     if (products.length < 1) {
         return <h5 style={{ textTransform: 'none' }} >
-            Sorry no products match your search
+            Sorry no products match your search...
         </h5>
     }
 
