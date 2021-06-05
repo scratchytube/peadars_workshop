@@ -11,10 +11,11 @@ const Filters = () => {
     const filters = useSelector(state => state.product.filters)
     const { text, category, min_price, max_price, price } = filters 
 
+    console.log(category)
+
     const handleUpdateFilters = (e) => {
         let name = e.target.name
         let value = e.target.value
-        dispatch(updateFilters({name, value}))
         
         if (name === 'category') {
             // we need the textContent from the button
@@ -23,12 +24,24 @@ const Filters = () => {
         if (name === 'price') {
             value = parseInt(value)
         }
+        dispatch(updateFilters({name, value}))
     }
 
     useEffect(() => {
         const filterByText = [...allProducts].filter((product) => (product.name.toLowerCase().includes(text)))
         dispatch(filteredProducts(filterByText))
     }, [dispatch, allProducts, text])
+
+    useEffect(() => {
+        if (category !== 'all') {
+            const filterByCategory = [...allProducts].filter((product) => product.category === category)
+            dispatch(filteredProducts(filterByCategory))
+        }
+        if (category === 'all') {
+            dispatch(filteredProducts(allProducts))
+        }
+    }, [dispatch, allProducts, category])
+    
 
     const handleClearFilters = () => {
         dispatch(clearFilters())
