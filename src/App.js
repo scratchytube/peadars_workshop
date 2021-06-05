@@ -16,6 +16,7 @@ import {
 
 const App = () => {
   const dispatch = useDispatch()
+  // const filters = useSelector((state) => state.product.filters)
 
   // products fetch
   useEffect(() => {
