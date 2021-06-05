@@ -8,7 +8,7 @@ const ProductList = () => {
     const isGridView = useSelector(state => state.product.isGridView)
 
     if (products.length < 1) {
-        <h5 style={{ textTransform: 'none' }} >
+        return <h5 style={{ textTransform: 'none' }} >
             Sorry no products match your search
         </h5>
     }

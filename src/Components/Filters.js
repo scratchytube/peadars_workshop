@@ -15,12 +15,7 @@ const Filters = () => {
         let name = e.target.name
         let value = e.target.value
         dispatch(updateFilters({name, value}))
-        console.log(text)
         
-        if (text) {
-            const filterByText = [...allProducts].filter((product) => (product.name.toLowerCase().includes(text)))
-                dispatch(filteredProducts(filterByText))
-        }
         if (name === 'category') {
             value = e.target.textContent
         }
@@ -28,6 +23,11 @@ const Filters = () => {
             value = parseInt(value)
         }
     }
+    
+    const filterByText = [...allProducts].filter((product) => (product.name.toLowerCase().includes(text)))
+        dispatch(filteredProducts(filterByText))
+    
+    console.log(text)
 
     const handleClearFilters = () => {
         dispatch(clearFilters())
