@@ -11,8 +11,6 @@ const Filters = () => {
     const filters = useSelector(state => state.product.filters)
     const { text, category, min_price, max_price, price } = filters 
 
-    console.log(category)
-
     const handleUpdateFilters = (e) => {
         let name = e.target.name
         let value = e.target.value
@@ -23,6 +21,7 @@ const Filters = () => {
         }
         if (name === 'price') {
             value = parseInt(value)
+            console.log(price)
         }
         dispatch(updateFilters({name, value}))
     }
@@ -41,6 +40,11 @@ const Filters = () => {
             dispatch(filteredProducts(allProducts))
         }
     }, [dispatch, allProducts, category])
+
+    // useEffect (() => {
+    //     const filterByPrice = [...allProducts].filter((product) => product.price <= price)
+    //     dispatch(filteredProducts(filterByPrice))
+    // }, [dispatch, allProducts, price])
     
 
     const handleClearFilters = () => {
@@ -90,9 +94,9 @@ const Filters = () => {
                        <input 
                        type="range" 
                        name="price" 
-                       onChange={handleUpdateFilters} 
                        min={min_price} 
                        max={max_price} 
+                       onChange={handleUpdateFilters} 
                        value={price}
                        />
                    </div>
