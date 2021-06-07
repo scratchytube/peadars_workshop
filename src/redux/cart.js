@@ -10,7 +10,9 @@ const cartSlice = createSlice({
     reducers: {
         addToCart(state, action) {
             const { id, amount, product } = action.payload
-            const tempItem = state.cart.find((i) => i.id === id )
+
+            const tempItem = state.cart.find((i) => i.id === id)
+
             if (tempItem) {
                 const tempCart = state.cart.map((cartItem) => {
                     if (cartItem.id === id) {
@@ -23,7 +25,6 @@ const cartSlice = createSlice({
                         return cartItem
                     }
                 } )
-
                 return {...state, cart: tempCart}
             } else {
                 const newItem = {id, name: product.name, amount, image: product.images[0].url, price: product.price, max: product.stock }
