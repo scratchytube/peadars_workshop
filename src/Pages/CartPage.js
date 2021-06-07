@@ -1,11 +1,10 @@
 import React from 'react'
 import { PageHero, CartContent } from '../Components'
 import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 const CartPage = () => {
-    const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart.cart)
 
     if (cart.length < 1) {
@@ -28,6 +27,8 @@ const CartPage = () => {
     const clearCart = () => {
 
     }
+
+    
 
     return (
         <main>
