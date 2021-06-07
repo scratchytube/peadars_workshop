@@ -41,10 +41,10 @@ const Filters = () => {
         }
     }, [dispatch, allProducts, category])
 
-    // useEffect (() => {
-    //     const filterByPrice = [...allProducts].filter((product) => product.price <= price)
-    //     dispatch(filteredProducts(filterByPrice))
-    // }, [dispatch, allProducts, price])
+    useEffect (() => {
+        const filterByPrice = [...allProducts].filter((product) => product.price <= price)
+        dispatch(filteredProducts(filterByPrice))
+    }, [dispatch, allProducts, price, max_price, min_price])
     
 
     const handleClearFilters = () => {

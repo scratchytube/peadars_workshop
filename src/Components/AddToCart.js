@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-// import AmountButtons from './AmountButtons'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../redux/cart'
 import styled from 'styled-components'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 
 const AddToCart = ({ product }) => {
     const { id, stock } = product
     const [amount, setAmount ] = useState(1)
+    const dispatch = useDispatch()
+
+    const addThisToMyCart = (id, amount, product) => {
+        dispatch(addToCart({id, amount, product}))
+    }
 
     const increase = () => {
         setAmount((oldAmount) => {
@@ -40,7 +46,7 @@ const AddToCart = ({ product }) => {
                         <FaPlus />
                     </button>
                 </div>
-                <Link to='/cart' className='btn'>
+                <Link to='/cart' className='btn' onClick={() => addThisToMyCart(id, amount, product)} >
                     add to cart
                 </Link>
             </div>
