@@ -9,7 +9,6 @@ import styled from 'styled-components'
 const CartContent = () => {
     const cartArray = useSelector(state => state.cart.cart)
 
-
     const clearCart = () => {
 
     }
