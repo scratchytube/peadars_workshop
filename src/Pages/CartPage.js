@@ -24,10 +24,6 @@ const CartPage = () => {
 
     }
 
-    const clearCart = () => {
-
-    }
-
     
 
     return (
