@@ -6,6 +6,7 @@ const cartSlice = createSlice({
         cart: [],
         totalCartItems: 0,
         totalAmount: 0,
+        shippingFee: 534,
     },
     reducers: {
         addToCart(state, action) {
