@@ -15,7 +15,7 @@ const CartContent = () => {
     }
 
     return (
-        <Wrapper classname='section section-center'>
+        <Wrapper className='section section-center'>
             <CartColumns />
             {
                 cartArray.map((item) => {
@@ -39,8 +39,8 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: space-between;
     margin-top: 2rem;
-}
-.link-btn {
+  }
+  .link-btn {
     background: transparent;
     border-color: transparent;
     text-transform: capitalize;
@@ -51,8 +51,8 @@ const Wrapper = styled.section`
     letter-spacing: var(--spacing);
     font-weight: 400;
     cursor: pointer;
-}
-.clear-btn {
+  }
+  .clear-btn {
     background: var(--clr-black);
-}
+  }
 `
