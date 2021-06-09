@@ -1,15 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
+import { removeCartItem } from '../redux/cart'
 import QuantityButtons from './QuantityButtons'
 import { formatPrice } from '../utils/helpers'
 import { FaTrash } from 'react-icons/fa'
 
 const CartItem = ({ item }) => {
     const { id, name, image, price, amount } = item
+    const dispatch = useDispatch()
 
     const increase = () => {}
     const decrease = () => {}
-    const removeItem = () => {}
+    const removeItem = (id) => {
+        dispatch(removeCartItem(id))
+    }
     const toggleAmount = () => {}
 
 

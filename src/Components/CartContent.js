@@ -1,5 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { clearWholeCart } from '../redux/cart'
 import { Link } from 'react-router-dom'
 import CartColumns from './CartColumns'
 import CartItem from './CartItem'
@@ -8,9 +9,10 @@ import styled from 'styled-components'
 
 const CartContent = () => {
     const cartArray = useSelector(state => state.cart.cart)
+    const dispatch = useDispatch()
 
     const clearCart = () => {
-
+        dispatch(clearWholeCart())
     }
 
     return (

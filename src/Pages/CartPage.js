@@ -16,16 +16,6 @@ const CartPage = () => {
         </Wrapper>
     }
 
-    const removeItem = id => {
-
-    }
-
-    const toggleAmount = (id, value) => {
-
-    }
-
-    
-
     return (
         <main>
             <PageHero title='cart'/>
