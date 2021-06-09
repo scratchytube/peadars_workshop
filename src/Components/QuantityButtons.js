@@ -22,6 +22,7 @@ const QuantityButtons = ({ amount, increase, decrease }) => {
 export default QuantityButtons
 
 const Wrapper = styled.div`
+.amount-btns {
   display: grid;
   width: 140px;
   justify-items: center;
@@ -30,6 +31,8 @@ const Wrapper = styled.div`
   h2 {
     margin-bottom: 0;
   }
+}
+ 
   button {
     background: transparent;
     border-color: transparent;

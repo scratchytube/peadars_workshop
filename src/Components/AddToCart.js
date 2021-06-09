@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+import QuantityButtons from './QuantityButtons'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/cart'
 import styled from 'styled-components'
-import QuantityButtons from './QuantityButtons'
 
 const AddToCart = ({ product }) => {
     const { id, stock } = product
@@ -54,14 +54,14 @@ margin-top: 2rem;
     margin-top: 1rem;
     width: 140px;
 }
-.amount-btns {
-    display: grid;
-    width: 140px;
-    justify-items: center;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-    h2 {
-        margin-bottom: 0
-    }
-}
+// .amount-btns {
+//     display: grid;
+//     width: 140px;
+//     justify-items: center;
+//     grid-template-columns: repeat(3, 1fr);
+//     align-items: center;
+//     h2 {
+//         margin-bottom: 0
+//     }
+// }
 `
