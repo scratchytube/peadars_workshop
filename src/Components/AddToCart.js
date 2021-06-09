@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/cart'
 import styled from 'styled-components'
-import { FaPlus, FaMinus } from 'react-icons/fa'
+import QuantityButtons from './QuantityButtons'
 
 const AddToCart = ({ product }) => {
     const { id, stock } = product
@@ -37,15 +37,7 @@ const AddToCart = ({ product }) => {
     return (
         <Wrapper>
             <div className="btn-container">
-                <div className="amount-btns">
-                    <button type='button' className='amount-btn' onClick={decrease}>
-                        <FaMinus />
-                    </button>
-                    <h2 className='amount'>{amount}</h2>
-                    <button type='button' className='amount-btn' onClick={increase}>
-                        <FaPlus />
-                    </button>
-                </div>
+                <QuantityButtons amount={amount} increase={increase} decrease={decrease}/>
                 <Link to='/cart' className='btn' onClick={() => addThisToMyCart(id, amount, product)} >
                     add to cart
                 </Link>
@@ -58,12 +50,6 @@ export default AddToCart
 
 const Wrapper = styled.section`
 margin-top: 2rem;
-// div {
-//     display: flex;
-// }
-// .btn-container {
-//     margin-top: 2rem;
-// }
 .btn {
     margin-top: 1rem;
     width: 140px;
@@ -77,19 +63,5 @@ margin-top: 2rem;
     h2 {
         margin-bottom: 0
     }
-}
-button {
-    background: transparent;
-    border-color: transparent;
-    cursor: pointer;
-    padding: 1rem 0;
-    width: 2rem;
-    height: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-h2 {
-    margin-bottom: 0
 }
 `
