@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, useHistory, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { singleProduct } from '../redux/product'
@@ -8,7 +8,10 @@ import { formatPrice } from '../utils/helpers'
 
 function SingleProductPage() {
     const dispatch = useDispatch()
-    const { id } = useParams()
+    const params = useParams()
+
+    const [isLoaded, setIsLoaded] = useState(false)
+
     const productObject = useSelector((state) => state.product.singleProduct)
     const { 
         name, 
@@ -21,12 +24,15 @@ function SingleProductPage() {
 
     // single product fetch
     useEffect(() => {
-        fetch(`https://course-api.com/react-store-single-product?id=${id}`)
+        fetch(`https://course-api.com/react-store-single-product?id=${params.id}`)
         .then((r) => r.json())
         .then(singleServing => {
             dispatch(singleProduct(singleServing))
+            setIsLoaded(true)
         })
-    }, [id, dispatch])
+    }, [params.id, dispatch])
+
+    if (!isLoaded) return <h2>Loading...</h2>
 
     return (
         <Wrapper>
