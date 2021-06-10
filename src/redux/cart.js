@@ -63,9 +63,22 @@ const cartSlice = createSlice({
                 return item
             })
             return {...state,cart: tempCart}
-        }
+        },
+        countCartTotals(state, action) {
+            const {totalCartItems, totalAmount} = state.cart.reduce((total, cartItem) => {
+                const {amount, price} = cartItem
+
+                total.totalCartItems += amount
+                total.totalAmount += price * amount
+
+                return total
+            },{
+                totalCartItems: 0, totalAmount: 0
+            })
+            return {...state, totalCartItems, totalAmount}
+        },
     }
 })
 
-export const { addToCart, removeCartItem, clearWholeCart, toggleAmount } = cartSlice.actions
+export const { addToCart, removeCartItem, clearWholeCart, toggleAmount, countCartTotals } = cartSlice.actions
 export default cartSlice.reducer

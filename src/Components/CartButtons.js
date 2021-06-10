@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { countCartTotals } from '../redux/cart'
 import { toggleSideBar } from '../redux/product'
 import styled from 'styled-components'
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa'
@@ -8,10 +9,16 @@ import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa'
 
 const CartButtons = () => {
     const dispatch = useDispatch()
+    const itemInCart = useSelector((state) => state.cart.totalCartItems)
+    const cart = useSelector(state => state.cart.cart)
 
     const handleToggleSideBar = () => {
         dispatch(toggleSideBar())
     }
+
+    useEffect(() => {
+        dispatch(countCartTotals())
+    }, [dispatch, cart, itemInCart])
 
     return (
             <Wrapper className='cart-btn-wrapper'>
@@ -19,7 +26,7 @@ const CartButtons = () => {
                     Cart 
                     <span className='cart-container'>
                         <FaShoppingCart />
-                        <span className='cart-value'>12</span>
+                        <span className='cart-value'>{itemInCart}</span>
                     </span>
                 </Link>
                 <button type='button' className='auth-button'>
