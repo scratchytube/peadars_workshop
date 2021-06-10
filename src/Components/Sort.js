@@ -1,4 +1,4 @@
-import React,  { useEffect } from 'react'
+import React  from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { filteredProducts, sorter } from '../redux/product'
 import { toggleView } from '../redux/product'
@@ -10,7 +10,6 @@ const Sort = () => {
     const products = useSelector(state => state.product.filtered_products)
     const theGridView = useSelector(state => state.product.isGridView)
     const sort = useSelector(state => state.product.sort)
-    console.log(sort)
 
     const handleSort = (e) => {
         const value = e.target.value

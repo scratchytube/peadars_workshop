@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { allProducts, featuredProductsFetch, filteredProducts } from './redux/product'
 import { Route, Switch } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './Components'

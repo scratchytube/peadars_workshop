@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { countCartTotals } from '../redux/cart'
 import { toggleSideBar } from '../redux/product'
 import styled from 'styled-components'
-import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa'
+import { FaShoppingCart, FaUserPlus } from 'react-icons/fa'
 
 
 const CartButtons = () => {
