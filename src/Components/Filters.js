@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { filteredProducts, updateFilters, clearFilters } from '../redux/product'
+import { filteredProducts, updateFilters, clearFilters, sorter } from '../redux/product'
 import { formatPrice } from '../utils/helpers'
 import styled from 'styled-components'
 
@@ -21,7 +21,6 @@ const Filters = () => {
         }
         if (name === 'price') {
             value = parseInt(value)
-            console.log(price)
         }
         dispatch(updateFilters({name, value}))
     }
@@ -34,6 +33,7 @@ const Filters = () => {
     useEffect(() => {
         if (category !== 'all') {
             const filterByCategory = [...allProducts].filter((product) => product.category === category)
+            dispatch(sorter('name-a'))
             dispatch(filteredProducts(filterByCategory))
         }
         if (category === 'all') {

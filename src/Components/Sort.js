@@ -1,4 +1,4 @@
-import React from 'react'
+import React,  { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { filteredProducts, sorter } from '../redux/product'
 import { toggleView } from '../redux/product'
@@ -10,6 +10,7 @@ const Sort = () => {
     const products = useSelector(state => state.product.filtered_products)
     const theGridView = useSelector(state => state.product.isGridView)
     const sort = useSelector(state => state.product.sort)
+    console.log(sort)
 
     const handleSort = (e) => {
         const value = e.target.value
@@ -37,6 +38,29 @@ const Sort = () => {
         }
 
     }
+
+    // useEffect(() => {
+    //     if (sort === "price-lowest") {
+    //         const priceLowestFirst = [...products].sort((a,b) => a.price - b.price )
+    //         dispatch(filteredProducts(priceLowestFirst))
+    //     }
+    //     if (sort === "price-highest") {
+    //         const priceHighestFirst = [...products].sort((a,b) => b.price - a.price )
+    //         dispatch(filteredProducts(priceHighestFirst))
+    //     }
+    //     if (sort === "name-a") {
+    //         const alphabeticalOrder = [...products].sort((a,b) => {
+    //             return a.name.localeCompare(b.name)
+    //         })
+    //         dispatch(filteredProducts(alphabeticalOrder))
+    //     }
+    //     if (sort === "name-z") {
+    //         const reverseAlphabeticalOrder = [...products].sort((a,b) => {
+    //             return b.name.localeCompare(a.name)
+    //         })
+    //         dispatch(filteredProducts(reverseAlphabeticalOrder))
+    //     }
+    // }, [dispatch, products, sort])
 
     return (
         <Wrapper>
