@@ -38,6 +38,7 @@ const productSlice = createSlice({
             state.filters.max_price = maxPrice
             state.filters.price = maxPrice
             state.products = action.payload
+            console.log(state.products)
             // state.productsLoading = true
         },
         filteredProducts(state, action) {
