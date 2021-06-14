@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { countCartTotals } from '../redux/cart'
 import { toggleSideBar } from '../redux/product'
 import styled from 'styled-components'
-import { FaShoppingCart, FaUserPlus } from 'react-icons/fa'
+import { FaShoppingCart, FaUserPlus, FaUserMinus } from 'react-icons/fa'
 
 
 const CartButtons = () => {
@@ -31,6 +31,9 @@ const CartButtons = () => {
                 </Link>
                 <button type='button' className='auth-button'>
                     Login <FaUserPlus />
+                </button>
+                <button type='button' className='auth-button'>
+                    Logout <FaUserMinus />
                 </button>
             </Wrapper>
     )
