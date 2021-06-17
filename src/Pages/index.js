@@ -5,6 +5,8 @@ import About from './AboutPage'
 import Cart from './CartPage'
 import Error from './ErrorPage'
 import Checkout from './CheckoutPage'
+import Auth from './Auth'
+
 import PrivateRoute from './PrivateRouter'
 
 export {
@@ -16,4 +18,5 @@ export {
     Error,
     Checkout,
     PrivateRoute,
+    Auth,
 }

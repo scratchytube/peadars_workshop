@@ -12,6 +12,9 @@ import Filters from './Filters'
 import Sort from './Sort'
 import ProductList from './ProductList'
 import CartContent from './CartContent'
+import Login from './Login'
+import Signup from './Signup'
+
 
 export {
     Navbar,
@@ -28,4 +31,6 @@ export {
     Sort,
     ProductList,
     CartContent,
+    Login,
+    Signup,
 }

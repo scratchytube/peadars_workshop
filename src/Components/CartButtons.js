@@ -32,9 +32,9 @@ const CartButtons = () => {
                 <button type='button' className='auth-button'>
                     Login <FaUserPlus />
                 </button>
-                <button type='button' className='auth-button'>
+                {/* <button type='button' className='auth-button'>
                     Logout <FaUserMinus />
-                </button>
+                </button> */}
             </Wrapper>
     )
 }
