@@ -22,6 +22,7 @@ const Login = () => {
             <div className="login">
                 <form onSubmit={handleSubmit} autoComplete='off' >
                     <h2>Welcome Back!</h2>
+
                     <div className='input-div' >
                         <input 
                         className='field-input'
@@ -55,11 +56,6 @@ export default Login
 
 const Wrapper = styled.div`
 
-// .login {
-//     width: 360px;
-//     padding: 8% 0 0;
-//     margin: auto;
-// }
 
 .login {
     display: flex;
@@ -68,7 +64,6 @@ const Wrapper = styled.div`
     width: 400px;
     margin: auto;
 }
-
 
 .input-div {
     margin-top: 1.5rem;

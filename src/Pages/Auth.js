@@ -3,10 +3,11 @@ import { Login, Signup } from '../Components'
 
 function Auth() {
 
-    
+
     return (
         <div>
-            <Login />        
+            {/* <Login />         */}
+            <Signup />
         </div>
     )
 }
