@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Signup = () => {
+const Signup = ({setShowLogin }) => {
     const [formData, setFormData] = useState({
         email: '',
         username: '',
@@ -23,7 +23,7 @@ const Signup = () => {
         <Wrapper className='page-100' >
             <div className='signup' >
                 <form onSubmit={handleSubmit} autoComplete='off' >
-                    <h2>Welcome to Peadars' Workshop</h2>
+                    <h5>Welcome to Peadars' Workshop</h5>
 
                     <div className='input-div' >
 
@@ -56,8 +56,8 @@ const Signup = () => {
 
                         <input className='btn' type="submit" value='Signup' />
                     </div>
-                    <div>
-                        <p>Already have an account? <Link>Sign-In</Link></p>
+                    <div className="back-to-signin">
+                        <p>Already have an account? <Link onClick={() => setShowLogin(true)} >Sign-In</Link></p>
                     </div>
                 </form>
             </div>
@@ -93,5 +93,12 @@ const Wrapper = styled.div`
     border-radius: var(--radius);
     border-color: transparent;
     letter-spacing: var(--spacing);
+}
+
+.back-to-signin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem
 }
 `

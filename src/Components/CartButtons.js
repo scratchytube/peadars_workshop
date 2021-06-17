@@ -29,9 +29,9 @@ const CartButtons = () => {
                         <span className='cart-value'>{itemInCart}</span>
                     </span>
                 </Link>
-                <button type='button' className='auth-button'>
+                <Link to='/auth' onClick={handleToggleSideBar} type='button' className='auth-button'>
                     Login <FaUserPlus />
-                </button>
+                </Link>
                 {/* <button type='button' className='auth-button'>
                     Logout <FaUserMinus />
                 </button> */}

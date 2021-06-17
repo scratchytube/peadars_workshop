@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const Login = () => {
+const Login = ({setShowLogin}) => {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -43,7 +43,7 @@ const Login = () => {
                     <input className='btn' type="submit" value="Login" />
                     </div>
                     <div className='login-links' >
-                        <p>Don't have an account? <Link>Register</Link></p>
+                        <p>Don't have an account? <Link onClick={() => setShowLogin(false)} >Register</Link></p>
                         <Link>Forgot password?</Link>
                     </div>
                 </form>
