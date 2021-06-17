@@ -38,29 +38,6 @@ const Sort = () => {
 
     }
 
-    // useEffect(() => {
-    //     if (sort === "price-lowest") {
-    //         const priceLowestFirst = [...products].sort((a,b) => a.price - b.price )
-    //         dispatch(filteredProducts(priceLowestFirst))
-    //     }
-    //     if (sort === "price-highest") {
-    //         const priceHighestFirst = [...products].sort((a,b) => b.price - a.price )
-    //         dispatch(filteredProducts(priceHighestFirst))
-    //     }
-    //     if (sort === "name-a") {
-    //         const alphabeticalOrder = [...products].sort((a,b) => {
-    //             return a.name.localeCompare(b.name)
-    //         })
-    //         dispatch(filteredProducts(alphabeticalOrder))
-    //     }
-    //     if (sort === "name-z") {
-    //         const reverseAlphabeticalOrder = [...products].sort((a,b) => {
-    //             return b.name.localeCompare(a.name)
-    //         })
-    //         dispatch(filteredProducts(reverseAlphabeticalOrder))
-    //     }
-    // }, [dispatch, products, sort])
-
     return (
         <Wrapper>
             <div className="btn-container">
