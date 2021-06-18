@@ -19,6 +19,7 @@ import {
 const App = () => {
   const dispatch = useDispatch()
 
+  // auto login
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {

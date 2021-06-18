@@ -12,10 +12,12 @@ const CartButtons = () => {
     const dispatch = useDispatch()
     const itemInCart = useSelector((state) => state.cart.totalCartItems)
     const cart = useSelector(state => state.cart.cart)
+    const user = useSelector(state => state.user.user)
 
     const logout = () => {
         localStorage.removeItem("token");
         dispatch(currentUser(null))
+        console.log(user)
     }
 
     const handleToggleSideBar = () => {
@@ -35,12 +37,13 @@ const CartButtons = () => {
                         <span className='cart-value'>{itemInCart}</span>
                     </span>
                 </Link>
-                <Link to='/auth' onClick={handleToggleSideBar} type='button' className='auth-button'>
-                    Login <FaUserPlus />
-                </Link>
-                <button onClick={logout} type='button' className='auth-button'>
+                { user ?  (<button onClick={logout} type='button' className='auth-button'>
                     Logout <FaUserMinus />
-                </button>
+                </button> ) : 
+                (<Link to='/auth' onClick={handleToggleSideBar} type='button' className='auth-button'>
+                    Login <FaUserPlus />
+                </Link>)}
+                
             </Wrapper>
     )
 }
