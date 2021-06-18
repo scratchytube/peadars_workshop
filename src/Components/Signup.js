@@ -1,22 +1,51 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { currentUser } from '../redux/user'
+import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Signup = ({setShowLogin }) => {
+    const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         email: '',
         username: '',
         password: '',
     })
     const { username, email, password } = formData
+    const [errors, setErrors] = useState([])
+    const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        fetch('http://localhost:3000/signup', {
+            method: "POST",
+            headers: {
+                "Content-Type": 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+        .then((r) => r.json())
+        .then((data) => {
+            if (data.errors) {
+                setErrors(data.errors)
+            } else {
+                const { user, token} = data
+                localStorage.setItem('token', token)
+                dispatch(currentUser(user))
+                history.push('/')
+            }
+        })
     }
+
+    const issaNewMe = useSelector(state => state.user.user)
+    console.log(issaNewMe)
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
+
+    console.log(email)
 
 
     return (
@@ -54,6 +83,10 @@ const Signup = ({setShowLogin }) => {
                         value={password}
                         onChange={handleChange} />
 
+                        { errors.map(error => {
+                            return <p key={error} className='error' >{error}</p>
+                        })}
+
                         <input className='btn' type="submit" value='Signup' />
                     </div>
                     <div className="back-to-signin">
@@ -74,6 +107,10 @@ const Wrapper = styled.div`
     align-items: center;
     width: 400px;
     margin: auto;
+}
+
+.error {
+    color: var(--clr-red-dark)
 }
 
 .input-div {

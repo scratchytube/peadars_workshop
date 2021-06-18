@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { allProducts, featuredProductsFetch, filteredProducts } from './redux/product'
+import { currentUser } from './redux/user'
 import { Route, Switch } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './Components'
 import { 
@@ -17,7 +18,17 @@ import {
 
 const App = () => {
   const dispatch = useDispatch()
-  // const filters = useSelector((state) => state.product.filters)
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      fetch('http://localhost:3000/me')
+      .then((r) => r.json())
+      .then((user) => {
+        dispatch(currentUser(user))
+      })
+    }
+  })
 
   // products fetch
   useEffect(() => {

@@ -1,15 +1,41 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { currentUser } from '../redux/user'
+import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Login = ({setShowLogin}) => {
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const me = useSelector(state => state.user.user)
+    console.log(me)
+
     const [formData, setFormData] = useState({
         username: '',
         password: '',
     })
+    const [errors, setErrors] = useState([])
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        fetch('http://localhost:3000/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+        .then((r) => r.json())
+        .then((data) => {
+            if (data.errors) {
+                setErrors(data.errors)
+            } else {
+                const { user, token} = data
+                localStorage.setItem('token', token)
+                dispatch(currentUser(user))
+                history.push('/')
+            }
+        })
     }
 
     const handleChange = (e) => {
@@ -40,6 +66,9 @@ const Login = ({setShowLogin}) => {
                         value={formData.password}
                         onChange={handleChange} 
                         />
+                        { errors.map(error => {
+                            return <p key={error} className='error' >{error}</p>
+                        })}
                     <input className='btn' type="submit" value="Login" />
                     </div>
                     <div className='login-links' >
@@ -90,5 +119,9 @@ const Wrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
+}
+
+.error {
+    color: var(--clr-red-dark)
 }
 `
