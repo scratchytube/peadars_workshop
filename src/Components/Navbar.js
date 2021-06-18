@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { toggleSideBar } from '../redux/product'
 import styled from 'styled-components'
 import { FaBars } from 'react-icons/fa'
@@ -9,6 +9,7 @@ import CartButtons from './CartButtons'
 
 const Navbar = () => {
   const dispatch = useDispatch()
+  const user = useSelector(state => state.user.user)
 
   const handleToggleSideBar = () => {
     dispatch(toggleSideBar())
@@ -33,6 +34,10 @@ const Navbar = () => {
                     <li>
                         <Link to='/products'>The Goods</Link>
                     </li>
+                    { user && 
+                    ( <li>
+                      <Link to='/checkout' >Checkout</Link>
+                      </li>) }
                 </ul>
                 <CartButtons />
             </div>

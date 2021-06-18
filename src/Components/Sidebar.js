@@ -10,6 +10,7 @@ import { FaTimes } from 'react-icons/fa'
 const Sidebar = () => {
     const dispatch = useDispatch()
     const sidebar = useSelector((state) => state.product.isSideBar)
+    const user = useSelector(state => state.user.user)
 
     const handleToggleSideBar = () => {
         dispatch(toggleSideBar())
@@ -35,9 +36,11 @@ const Sidebar = () => {
                     <li onClick={handleToggleSideBar} >
                         <Link to='/products'>The Goods</Link>
                     </li>
-                    <li onClick={handleToggleSideBar} >
-                        <Link to='/checkout'>Checkout</Link>
-                    </li>
+                    { user && 
+                        <li onClick={handleToggleSideBar} >
+                            <Link to='/checkout'>Checkout</Link>
+                        </li>
+                    }
                 </ul>
                 <CartButtons />
             </aside>

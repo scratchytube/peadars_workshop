@@ -5,6 +5,7 @@ import { formatPrice } from '../utils/helpers'
 import styled from 'styled-components'
 
 const CartTotals = () => {
+    const user = useSelector(state => state.user.user)
     const cartRedux = useSelector(state => state.cart)
     const {totalAmount, shippingFee } = cartRedux
 
@@ -19,7 +20,13 @@ const CartTotals = () => {
                     <hr />
                     <h4>order total : <span>{formatPrice(totalAmount + shippingFee)}</span></h4>
                 </article>
-                <Link to="/checkout" className='btn'>proceed to checkout</Link>
+                { user ? 
+                <Link to="/checkout" className='btn'>
+                  proceed to checkout
+                </Link> 
+                :
+                <Link className='btn' type='button' to='/auth'>Login</Link>  }
+                
             </div>
         </Wrapper>
     )
