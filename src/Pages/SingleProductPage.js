@@ -20,13 +20,16 @@ function SingleProductPage() {
         stock, 
         images,
     } = productObject
-    
 
+    console.log(productObject.images)
+    
+    
     // single product fetch
     useEffect(() => {
-        fetch(`https://course-api.com/react-store-single-product?id=${params.id}`)
+        fetch(`http://localhost:3000/api/v1/products/${params.id}`)
         .then((r) => r.json())
         .then(singleServing => {
+            console.log(singleServing)
             dispatch(singleProduct(singleServing))
             setIsLoaded(true)
         })

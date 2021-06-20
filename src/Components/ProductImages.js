@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const ProductImages = ({ images }) => {
     const [main, setMain] = useState(images[0])
+    console.log(images)
     
     return (
         <Wrapper>
@@ -11,7 +12,7 @@ const ProductImages = ({ images }) => {
                 {images.map((image, index) => {
                     return  (
                     <img src={image.url} 
-                    alt={image.filename} 
+                    alt={"wooden trinkets"} 
                     key={index} 
                     onClick={() => setMain(images[index])} 
                     className={`${image.url === main.url ? 'active' : null}`}

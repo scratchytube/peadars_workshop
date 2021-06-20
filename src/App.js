@@ -23,7 +23,7 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
-      fetch('http://localhost:3000/me', {
+      fetch('http://localhost:3000/api/v1/me', {
         headers: {
           Authorization: `Bearer ${token}`
         },
@@ -37,7 +37,7 @@ const App = () => {
 
   // products fetch
   useEffect(() => {
-    fetch('https://course-api.com/react-store-products')
+    fetch('http://localhost:3000/api/v1/products')
     .then((r) => r.json())
     .then((productsArray) => {
       dispatch(allProducts(productsArray))
@@ -46,7 +46,7 @@ const App = () => {
 
   // filtered products
   useEffect(() => {
-    fetch('https://course-api.com/react-store-products')
+    fetch('http://localhost:3000/api/v1/products')
     .then((r) => r.json())
     .then((filteredArray) => {
       dispatch(filteredProducts(filteredArray))
@@ -55,7 +55,7 @@ const App = () => {
 
   // featured products fetch
   useEffect(() => {
-    fetch('https://course-api.com/react-store-products')
+    fetch('http://localhost:3000/api/v1/products')
     .then((r) => r.json())
     .then((featuredProductsArray) => {
       dispatch(featuredProductsFetch(featuredProductsArray))

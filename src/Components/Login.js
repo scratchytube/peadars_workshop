@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { currentUser } from '../redux/user'
 import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
@@ -7,8 +7,6 @@ import styled from 'styled-components'
 const Login = ({setShowLogin}) => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const me = useSelector(state => state.user.user)
-    console.log(me)
 
     const [formData, setFormData] = useState({
         username: '',
@@ -18,7 +16,7 @@ const Login = ({setShowLogin}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:3000/login', {
+        fetch('http://localhost:3000/api/v1/login', {
             method: "POST",
             headers: {
                 "Content-Type": 'application/json',
