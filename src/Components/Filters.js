@@ -58,12 +58,17 @@ const Filters = () => {
     const categories = getUniqueValuesFromProducts(allProducts)
     
     const renderCategoryButtons = categories.map((c, index) => {
-        return <button 
-        key={index}
-        name='category'
-        onClick={handleUpdateFilters}
-        className={`${ category === c.toLowerCase() ? 'active' : null }`}
+        return ( 
+        <button 
+            key={index}
+            name='category'
+            type='button'
+            onClick={handleUpdateFilters}
+            className={`${ 
+                category === c ? 'active' : null 
+            }`}
         >{c}</button>
+        )
     })
 
 
