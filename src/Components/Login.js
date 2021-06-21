@@ -9,7 +9,7 @@ const Login = ({setShowLogin}) => {
     const history = useHistory()
 
     const [formData, setFormData] = useState({
-        username: '',
+        email: '',
         password: '',
     })
     const [errors, setErrors] = useState([])
@@ -50,10 +50,10 @@ const Login = ({setShowLogin}) => {
                     <div className='input-div' >
                         <input 
                         className='field-input'
-                        placeholder="Username"
+                        placeholder="Email"
                         type="text"
-                        name="username"
-                        value={formData.username}
+                        name="email"
+                        value={formData.email}
                         onChange={handleChange} 
                         />
                         <input

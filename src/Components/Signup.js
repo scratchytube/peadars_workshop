@@ -8,10 +8,10 @@ const Signup = ({setShowLogin }) => {
     const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         email: '',
-        username: '',
+        name: '',
         password: '',
     })
-    const { username, email, password } = formData
+    const { name, email, password } = formData
     const [errors, setErrors] = useState([])
     const history = useHistory()
 
@@ -66,11 +66,11 @@ const Signup = ({setShowLogin }) => {
                         />
 
                         <input 
-                        placeholder='UserName'
+                        placeholder='Name'
                         className='field-input'
                         type="text"
-                        name="username"
-                        value={username}
+                        name="name"
+                        value={name}
                         onChange={handleChange} 
                         />
 
