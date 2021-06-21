@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { filteredProducts, updateFilters, clearFilters, sorter } from '../redux/product'
-import { formatPrice } from '../utils/helpers'
+// import { formatPrice } from '../utils/helpers'
 import styled from 'styled-components'
 
 const Filters = () => {
@@ -10,6 +10,7 @@ const Filters = () => {
     const allProducts = useSelector(state => state.product.products)
     const filters = useSelector(state => state.product.filters)
     const { text, category, min_price, max_price, price } = filters 
+    
 
     const handleUpdateFilters = (e) => {
         let name = e.target.name
@@ -18,6 +19,7 @@ const Filters = () => {
         if (name === 'category') {
             // we need the textContent from the button
             value = e.target.textContent
+
         }
         if (name === 'price') {
             value = parseInt(value)
@@ -33,13 +35,14 @@ const Filters = () => {
     useEffect(() => {
         if (category !== 'all') {
             const filterByCategory = [...allProducts].filter((product) => product.category === category)
+            console.log('before sending to reducer', filterByCategory)
             dispatch(sorter('name-a'))
             dispatch(filteredProducts(filterByCategory))
         }
         if (category === 'all') {
             dispatch(filteredProducts(allProducts))
         }
-    }, [dispatch, allProducts, category])
+    }, [dispatch, allProducts, category,])
 
     useEffect (() => {
         const filterByPrice = [...allProducts].filter((product) => product.price <= price)
@@ -65,7 +68,7 @@ const Filters = () => {
             type='button'
             onClick={handleUpdateFilters}
             className={`${ 
-                category === c ? 'active' : null 
+                category === c.toLowerCase() ? 'active' : null 
             }`}
         >{c}</button>
         )
@@ -91,7 +94,7 @@ const Filters = () => {
                         {renderCategoryButtons}
                        </div>
                    </div>
-                   <div className="form-control">
+                   {/* <div className="form-control">
                        <h5>price</h5>
                        <p className="price">
                            {formatPrice(price)}
@@ -104,7 +107,7 @@ const Filters = () => {
                        onChange={handleUpdateFilters} 
                        value={price}
                        />
-                   </div>
+                   </div> */}
                </form>
                <button type='button' className='clear-btn' onClick={handleClearFilters} >clear filters</button>
            </div>
