@@ -6,7 +6,6 @@ import styled from 'styled-components'
 
 const FeaturedProducts = () => {
     const featured = useSelector((state) => state.product.featuredProducts)
-    
 
     return (
         <Wrapper className='section' >

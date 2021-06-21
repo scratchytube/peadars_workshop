@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const Product = ({ productObjects }) => {
     const { id, image, name, price } = productObjects
-    console.log(productObjects)
+    
     
     return (
         <Wrapper>
