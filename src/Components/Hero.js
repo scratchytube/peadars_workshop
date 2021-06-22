@@ -50,7 +50,7 @@ const Wrapper = styled.section`
       margin-bottom: 2rem;
     }
     p {
-        font-size: 1rem;
+        font-size: 1.25rem;
     }
     .hero-btn {
         padding: 0.75rem 1.5rem;
