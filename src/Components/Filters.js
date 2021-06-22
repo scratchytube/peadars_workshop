@@ -35,8 +35,7 @@ const Filters = () => {
     useEffect(() => {
         if (category !== 'all') {
             const filterByCategory = [...allProducts].filter((product) => product.category === category)
-            console.log('before sending to reducer', filterByCategory)
-            dispatch(sorter('name-a'))
+            dispatch(sorter('choose'))
             dispatch(filteredProducts(filterByCategory))
         }
         if (category === 'all') {
@@ -85,7 +84,7 @@ const Filters = () => {
                        name='text' 
                        placeholder='search' 
                        className='search-input' 
-                       value={text} 
+                       value={text.trim()} 
                        onChange={handleUpdateFilters} />
                    </div>
                    <div className="form-control">

@@ -5,7 +5,7 @@ const productSlice = createSlice({
     initialState: {
        isSideBar: false,
        isGridView: true,
-       sort: 'name-a',
+       sort: 'choose',
     //    productsLoading: false,
     //    productsError: false,
        products: [],
