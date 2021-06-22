@@ -45,9 +45,6 @@ const Signup = ({setShowLogin }) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 
-    console.log(email)
-
-
     return (
         <Wrapper className='page-100' >
             <div className='signup' >
@@ -61,7 +58,7 @@ const Signup = ({setShowLogin }) => {
                         className='field-input'
                         type="text"
                         name="email"
-                        value={email}
+                        value={email.trim()}
                         onChange={handleChange}
                         />
 

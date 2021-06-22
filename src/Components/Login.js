@@ -53,7 +53,7 @@ const Login = ({setShowLogin}) => {
                         placeholder="Email"
                         type="text"
                         name="email"
-                        value={formData.email}
+                        value={formData.email.trim()}
                         onChange={handleChange} 
                         />
                         <input
