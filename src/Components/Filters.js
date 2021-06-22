@@ -138,6 +138,7 @@ const Wrapper = styled.section`
 button {
     display: block;
     margin: 0.25em 0;
+    padding: 0.25rem 0;
     text-transform: capitalize;
     background: transparent;
     border: none;
