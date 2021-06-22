@@ -35,7 +35,7 @@ background: var(--clr-grey-10);
     display: grid;
     gap: 2.5rem;
     img {
-        height: 225px;
+        height: 350px;
     }
 }
 .btn {

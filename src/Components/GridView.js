@@ -18,7 +18,7 @@ export default GridView
 
 const Wrapper = styled.section`
 img {
-    height: 175px;
+    height: 300px;
 }
 
 .products-container {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { currentUser } from '../redux/user'
 import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
@@ -37,9 +37,6 @@ const Signup = ({setShowLogin }) => {
             }
         })
     }
-
-    const issaNewMe = useSelector(state => state.user.user)
-    console.log(issaNewMe)
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
