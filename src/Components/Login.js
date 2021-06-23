@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { currentUser } from '../redux/user'
+import { defaultCart } from '../redux/cart'
 import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -30,9 +31,18 @@ const Login = ({setShowLogin}) => {
             } else {
                 const { user, token} = data
                 localStorage.setItem('token', token)
+                setDefaultCart(data)
                 dispatch(currentUser(user))
                 history.push('/')
             }
+        })
+    }
+
+    const setDefaultCart = (loggedInUser) => {
+        fetch(`http://localhost:3000/api/v1/orders/${loggedInUser.id}`)
+        .then(r => r.json())
+        .then(kingCart => {
+            dispatch(defaultCart(kingCart))
         })
     }
 

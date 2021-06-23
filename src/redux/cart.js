@@ -9,6 +9,9 @@ const cartSlice = createSlice({
         shippingFee: 534,
     },
     reducers: {
+        defaultCart(state, action) {
+            state.cart = action.payload
+        },
         addToCart(state, action) {
             
             const { id, amount, product } = action.payload
@@ -80,5 +83,5 @@ const cartSlice = createSlice({
     }
 })
 
-export const { addToCart, removeCartItem, clearWholeCart, toggleAmount, countCartTotals } = cartSlice.actions
+export const { addToCart, defaultCart, removeCartItem, clearWholeCart, toggleAmount, countCartTotals } = cartSlice.actions
 export default cartSlice.reducer

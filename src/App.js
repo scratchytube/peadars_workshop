@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { allProducts, featuredProductsFetch, filteredProducts } from './redux/product'
 import { currentUser } from './redux/user'
+import { addToCart } from './redux/cart'
 import { Route, Switch } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './Components'
 import { 
@@ -18,6 +19,10 @@ import {
 
 const App = () => {
   const dispatch = useDispatch()
+  const kingUser = useSelector(state => state.user.user)
+  console.log(kingUser)
+  // const current_user = useSelector((state) => state.user.user)
+
 
   // auto login
   useEffect(() => {
@@ -33,7 +38,15 @@ const App = () => {
         dispatch(currentUser(user))
       })
     }
-  })
+  }, [dispatch])
+      
+      // useEffect(() => {
+      //   fetch(`http://localhost:3000/api/v1/orders/${params.id}`)
+      //   .then(r => r.json())
+      //   .then(orderArray => {
+      //     dispatch(defaultCart(orderArray))
+      //   })
+      // }, [dispatch, params.id])
 
   // products fetch
   useEffect(() => {
