@@ -19,10 +19,10 @@ import {
 
 const App = () => {
   const dispatch = useDispatch()
-  const kingUser = useSelector(state => state.user.user)
-  console.log(kingUser)
-  // const current_user = useSelector((state) => state.user.user)
-
+  const user = useSelector(state => state.user.user)
+  const cart = useSelector(state => state.cart.cart)
+  console.log(user)
+  console.log(cart)
 
   // auto login
   useEffect(() => {
@@ -40,13 +40,6 @@ const App = () => {
     }
   }, [dispatch])
       
-      // useEffect(() => {
-      //   fetch(`http://localhost:3000/api/v1/orders/${params.id}`)
-      //   .then(r => r.json())
-      //   .then(orderArray => {
-      //     dispatch(defaultCart(orderArray))
-      //   })
-      // }, [dispatch, params.id])
 
   // products fetch
   useEffect(() => {

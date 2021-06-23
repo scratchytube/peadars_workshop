@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { currentUser } from '../redux/user'
-import { countCartTotals } from '../redux/cart'
+import { countCartTotals, defaultCart } from '../redux/cart'
 import { toggleSideBar } from '../redux/product'
 import styled from 'styled-components'
 import { FaShoppingCart, FaUserPlus, FaUserMinus } from 'react-icons/fa'
@@ -16,8 +16,8 @@ const CartButtons = () => {
 
     const logout = () => {
         localStorage.removeItem("token");
+        dispatch(defaultCart([]))
         dispatch(currentUser(null))
-        console.log(user)
     }
 
     const handleToggleSideBar = () => {

@@ -31,20 +31,21 @@ const Login = ({setShowLogin}) => {
             } else {
                 const { user, token} = data
                 localStorage.setItem('token', token)
-                setDefaultCart(data)
                 dispatch(currentUser(user))
+                // setDefaultCart(user)
                 history.push('/')
             }
         })
     }
 
-    const setDefaultCart = (loggedInUser) => {
-        fetch(`http://localhost:3000/api/v1/orders/${loggedInUser.id}`)
-        .then(r => r.json())
-        .then(kingCart => {
-            dispatch(defaultCart(kingCart))
-        })
-    }
+    // const setDefaultCart = (loggedInUser) => {
+    //     fetch(`http://localhost:3000/api/v1/orders/`)
+    //     .then(r => r.json())
+    //     .then(kingCart => {
+    //         console.log(kingCart)
+    //         dispatch(defaultCart(kingCart))
+    //     })
+    // }
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value})

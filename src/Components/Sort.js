@@ -9,8 +9,7 @@ const Sort = () => {
     const dispatch = useDispatch()
     const products = useSelector(state => state.product.filtered_products)
     const theGridView = useSelector(state => state.product.isGridView)
-    const sort = useSelector(state => state.product.sort)
-    console.log(sort)    
+    const sort = useSelector(state => state.product.sort)  
 
     const handleSort = (e) => {
         const value = e.target.value

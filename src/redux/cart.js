@@ -10,6 +10,7 @@ const cartSlice = createSlice({
     },
     reducers: {
         defaultCart(state, action) {
+            console.log(action.payload)
             state.cart = action.payload
         },
         addToCart(state, action) {
@@ -67,7 +68,7 @@ const cartSlice = createSlice({
             })
             return {...state,cart: tempCart}
         },
-        countCartTotals(state, action) {
+        countCartTotals(state) {
             const {totalCartItems, totalAmount} = state.cart.reduce((total, cartItem) => {
                 const { amount, price } = cartItem
 

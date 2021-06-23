@@ -4,6 +4,7 @@ import { currentUser } from '../redux/user'
 import { Link, useHistory } from 'react-router-dom'
 import { defaultCart } from '../redux/cart'
 import styled from 'styled-components'
+import { current } from '@reduxjs/toolkit'
 
 const Signup = ({setShowLogin }) => {
     const dispatch = useDispatch()
@@ -49,11 +50,11 @@ const Signup = ({setShowLogin }) => {
             body: JSON.stringify({
                 user_id: theNewUser.id,
                 checked_out: false
-            })
+                })
+            }) 
             .then((r) => r.json())
             .then(currentCart => {
-                dispatch(defaultCart(currentCart))
-            }) 
+                dispatch(defaultCart(currentCart.products))
         })
     }
     
