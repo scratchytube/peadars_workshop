@@ -4,7 +4,6 @@ import { currentUser } from '../redux/user'
 import { Link, useHistory } from 'react-router-dom'
 import { defaultCart } from '../redux/cart'
 import styled from 'styled-components'
-import { current } from '@reduxjs/toolkit'
 
 const Signup = ({setShowLogin }) => {
     const dispatch = useDispatch()

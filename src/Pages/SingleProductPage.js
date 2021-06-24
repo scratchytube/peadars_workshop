@@ -19,17 +19,13 @@ function SingleProductPage() {
         description, 
         stock, 
         images,
-    } = productObject
-
-    console.log(productObject.images)
-    
+    } = productObject    
     
     // single product fetch
     useEffect(() => {
         fetch(`http://localhost:3000/api/v1/products/${params.id}`)
         .then((r) => r.json())
         .then(singleServing => {
-            console.log(singleServing)
             dispatch(singleProduct(singleServing))
             setIsLoaded(true)
         })

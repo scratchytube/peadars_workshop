@@ -32,20 +32,27 @@ const Login = ({setShowLogin}) => {
                 const { user, token} = data
                 localStorage.setItem('token', token)
                 dispatch(currentUser(user))
-                // setDefaultCart(user)
+                setDefaultCart(user)
                 history.push('/')
             }
         })
     }
 
-    // const setDefaultCart = (loggedInUser) => {
-    //     fetch(`http://localhost:3000/api/v1/orders/`)
-    //     .then(r => r.json())
-    //     .then(kingCart => {
-    //         console.log(kingCart)
-    //         dispatch(defaultCart(kingCart))
-    //     })
-    // }
+    const setDefaultCart = (loggedInUser) => {
+        fetch(`http://localhost:3000/api/v1/orders/`)
+        .then(r => r.json())
+        .then(kingCart => {
+            const cartCart = [...kingCart]
+            .filter((cart) => cart.user_id === loggedInUser.id)
+            .filter((checked) => checked.checked_out === false)
+            const first = cartCart[0]
+
+            console.log(first)
+            console.log(first.products)
+            
+            dispatch(defaultCart(first.products))
+        })
+    }
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value})
