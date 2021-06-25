@@ -10,8 +10,12 @@ const cartSlice = createSlice({
     },
     reducers: {
         defaultCart(state, action) {
-            console.log(action.payload)
-            state.cart = action.payload
+            const hereYouGo = action.payload
+            console.log(hereYouGo)
+            console.log(hereYouGo.length)
+            state.totalCartItems = hereYouGo.length
+            state.cart = hereYouGo
+
         },
         addToCart(state, action) {
             

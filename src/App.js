@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { allProducts, featuredProductsFetch, filteredProducts } from './redux/product'
 import { currentUser } from './redux/user'
-// import { addToCart } from './redux/cart'
+import { defaultCart } from './redux/cart'
 import { Route, Switch } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './Components'
 import { 
@@ -21,6 +21,8 @@ const App = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
   const cart = useSelector(state => state.cart.cart)
+  const totalIshInCart = useSelector(state => state.cart.totalCartItems)
+  console.log(totalIshInCart)
   console.log(user)
   console.log(cart)
 
@@ -67,6 +69,35 @@ const App = () => {
       dispatch(featuredProductsFetch(featuredProductsArray))
     })
   }, [dispatch])
+
+  useEffect(() => {
+    if (user) {
+      fetch('http://localhost:3000/api/v1/orders')
+      .then((r) => r.json())
+      .then(cartArray => {
+        const cartCart = [...cartArray]
+        .filter((cart) => cart.user_id === user.id)
+        .filter((checked) => checked.checked_out === false)
+        const first = cartCart[0]
+        dispatch(defaultCart(first.products))
+      })
+    }
+  }, [dispatch, user])
+
+  // useEffect(() => {
+  //   If (user === true) {
+  //     fetch('http://localhost:3000/api/v1/orders')
+    // .then((r) => r.json())
+    // .then(cartArray => {
+    //   const cartCart = [...cartArray]
+    //         .filter((cart) => cart.user_id === user.id)
+    //         .filter((checked) => checked.checked_out === false)
+    //         const first = cartCart[0]
+    //         console.log(first)
+            // dispatch(defaultCart(first))
+  //   })
+  // }
+// }, [dispatch, user, cart])
 
   
 
