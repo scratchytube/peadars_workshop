@@ -42,13 +42,12 @@ const Login = ({setShowLogin}) => {
         fetch(`http://localhost:3000/api/v1/orders/`)
         .then(r => r.json())
         .then(kingCart => {
+            console.log(kingCart)
             const cartCart = [...kingCart]
             .filter((cart) => cart.user_id === loggedInUser.id)
             .filter((checked) => checked.checked_out === false)
             const first = cartCart[0]
-
             console.log(first)
-            console.log(first.products)
             
             dispatch(defaultCart(first.products))
         })

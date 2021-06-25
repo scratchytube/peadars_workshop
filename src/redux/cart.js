@@ -9,13 +9,8 @@ const cartSlice = createSlice({
         shippingFee: 534,
     },
     reducers: {
-        defaultCart(state, action) {
-            const hereYouGo = action.payload
-            console.log(hereYouGo)
-            console.log(hereYouGo.length)
-            state.totalCartItems = hereYouGo.length
-            state.cart = hereYouGo
-
+        defaultCart(state, action) {            
+            state.cart = action.payload
         },
         addToCart(state, action) {
             
@@ -27,8 +22,8 @@ const cartSlice = createSlice({
                 const tempCart = state.cart.map((cartItem) => {
                     if (cartItem.id === id) {
                         let newAmount = cartItem.amount + amount
-                        if(newAmount > cartItem.max) {
-                            newAmount = cartItem.max
+                        if(newAmount > cartItem.stock) {
+                            newAmount = cartItem.stock
                         }
                         return {...cartItem, amount: newAmount} 
                     } else {
@@ -37,7 +32,14 @@ const cartSlice = createSlice({
                 } )
                 return {...state, cart: tempCart}
             } else {
-                const newItem = {id, name: product.name, amount, image: product.images[0].url, price: product.price, max: product.stock }
+                const newItem = {
+                    id, 
+                    name: product.name, 
+                    amount: product.amount,
+                    image: product.images[0].url, 
+                    price: product.price, 
+                    stock: product.stock 
+                }
                 return {...state,cart:[...state.cart, newItem]}
             }
         },
@@ -55,8 +57,8 @@ const cartSlice = createSlice({
                 if (item.id === id) {
                     if(value === 'increase') {
                         let newAmount = item.amount + 1
-                        if (newAmount > item.max) {
-                            newAmount = item.max
+                        if (newAmount > item.stock) {
+                            newAmount = item.stock
                         }
                         return {...item, amount: newAmount}
                     }
