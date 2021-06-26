@@ -77,7 +77,14 @@ const cartSlice = createSlice({
         countCartTotals(state) {
            
             const myCart = state.cart.map((item) => item.product)
+            // console.log(myCart)
             const amount = state.cart.map((item) => item.quantity)
+            // .reduce((a,b) => a+b)
+            // console.log(amount)
+            
+            
+            // const amount = tempAmount.reduce((a,b) => a + b)
+           
 
             const {totalCartItems, totalAmount} = myCart.reduce((total, cartItem) => {
                 const {  price } = cartItem

@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import QuantityButtons from './QuantityButtons'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../redux/cart'
 import styled from 'styled-components'
 
 const AddToCart = ({ product }) => {
     const { id, stock } = product
+    const cart = useSelector((state) => state.cart.cart)
+    const thisCartId = cart.map(c => (c.order_id))
+    console.log(parseInt(thisCartId))
     const [amount, setAmount ] = useState(1)
     const dispatch = useDispatch()
 
     const addThisToMyCart = (id, amount, product) => {
+        fetch('')
         // POST to the product order
         // PATCH to the product in the product order
         dispatch(addToCart({id, amount, product}))
