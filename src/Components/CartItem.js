@@ -6,8 +6,11 @@ import QuantityButtons from './QuantityButtons'
 import { formatPrice } from '../utils/helpers'
 import { FaTrash } from 'react-icons/fa'
 
-const CartItem = ({ item }) => {
-    const { id, name, image, price, amount } = item
+const CartItem = ({ item, amount }) => {
+    const { id, name, image, price } = item
+    // quantity
+    console.log(item)
+
     const dispatch = useDispatch()
 
     const toggleQuantity = (id, value) => {

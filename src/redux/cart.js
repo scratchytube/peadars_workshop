@@ -9,7 +9,7 @@ const cartSlice = createSlice({
         shippingFee: 534,
     },
     reducers: {
-        defaultCart(state, action) {            
+        defaultCart(state, action) {
             state.cart = action.payload
         },
         addToCart(state, action) {
@@ -35,7 +35,7 @@ const cartSlice = createSlice({
                 const newItem = {
                     id, 
                     name: product.name, 
-                    amount: product.amount,
+                    amount: amount,
                     image: product.images[0].url, 
                     price: product.price, 
                     stock: product.stock 

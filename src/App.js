@@ -20,11 +20,9 @@ import {
 const App = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
-  const cart = useSelector(state => state.cart.cart)
+  // const cart = useSelector(state => state.cart.cart)
   const totalIshInCart = useSelector(state => state.cart.totalCartItems)
   console.log(totalIshInCart)
-  console.log(user)
-  console.log(cart)
 
   // auto login
   useEffect(() => {
@@ -70,34 +68,22 @@ const App = () => {
     })
   }, [dispatch])
 
-  useEffect(() => {
-    if (user) {
-      fetch('http://localhost:3000/api/v1/orders')
-      .then((r) => r.json())
-      .then(cartArray => {
-        const cartCart = [...cartArray]
-        .filter((cart) => cart.user_id === user.id)
-        .filter((checked) => checked.checked_out === false)
-        const first = cartCart[0]
-        dispatch(defaultCart(first.products))
-      })
-    }
-  }, [dispatch, user])
-
+  //setting up users cart on login
   // useEffect(() => {
-  //   If (user === true) {
+  //   if (user) {
   //     fetch('http://localhost:3000/api/v1/orders')
-    // .then((r) => r.json())
-    // .then(cartArray => {
-    //   const cartCart = [...cartArray]
-    //         .filter((cart) => cart.user_id === user.id)
-    //         .filter((checked) => checked.checked_out === false)
-    //         const first = cartCart[0]
-    //         console.log(first)
-            // dispatch(defaultCart(first))
-  //   })
-  // }
-// }, [dispatch, user, cart])
+  //     .then((r) => r.json())
+  //     .then(cartArray => {
+  //       const cartCart = [...cartArray]
+  //       .filter((cart) => cart.user_id === user.id)
+  //       .filter((checked) => checked.checked_out === false)
+  //       const first = cartCart[0]
+  //      dispatch(defaultCart(first.products))
+  //       // console.log(first.product_orders)
+  //       dispatch(defaultCart(first.product_orders))
+  //     })
+  //   }
+  // }, [dispatch, user])
 
   
 

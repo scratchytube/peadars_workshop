@@ -11,6 +11,8 @@ const AddToCart = ({ product }) => {
     const dispatch = useDispatch()
 
     const addThisToMyCart = (id, amount, product) => {
+        // POST to the product order
+        // PATCH to the product in the product order
         dispatch(addToCart({id, amount, product}))
     }
 
