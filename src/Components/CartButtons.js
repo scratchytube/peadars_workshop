@@ -34,7 +34,7 @@ const CartButtons = () => {
                     Cart 
                     <span className='cart-container'>
                         <FaShoppingCart />
-                        <span className='cart-value'>{itemInCart}</span>
+                        <span className='cart-value'>{parseInt(itemInCart)}</span>
                     </span>
                 </Link>
                 { user ?  (<button onClick={logout} type='button' className='auth-button'>

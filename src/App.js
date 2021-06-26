@@ -21,8 +21,6 @@ const App = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
   // const cart = useSelector(state => state.cart.cart)
-  const totalIshInCart = useSelector(state => state.cart.totalCartItems)
-  console.log(totalIshInCart)
 
   // auto login
   useEffect(() => {
@@ -68,24 +66,20 @@ const App = () => {
     })
   }, [dispatch])
 
-  //setting up users cart on login
-  // useEffect(() => {
-  //   if (user) {
-  //     fetch('http://localhost:3000/api/v1/orders')
-  //     .then((r) => r.json())
-  //     .then(cartArray => {
-  //       const cartCart = [...cartArray]
-  //       .filter((cart) => cart.user_id === user.id)
-  //       .filter((checked) => checked.checked_out === false)
-  //       const first = cartCart[0]
-  //      dispatch(defaultCart(first.products))
-  //       // console.log(first.product_orders)
-  //       dispatch(defaultCart(first.product_orders))
-  //     })
-  //   }
-  // }, [dispatch, user])
-
-  
+  // autoLoads the cart upon login
+  useEffect(() => {
+    if (user) {
+      fetch(`http://localhost:3000/api/v1/productorders`)
+      .then(r => r.json())
+      .then(mainCart => {
+        const misterCart = [...mainCart]
+        .filter((cart) => cart.order.user_id === user.id)
+        .filter((checked) => checked.order.checked_out === false)
+        console.log(misterCart)
+        dispatch(defaultCart(misterCart))
+      })
+    }
+  }, [dispatch, user])
 
   return (
     <div>

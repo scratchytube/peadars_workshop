@@ -75,8 +75,12 @@ const cartSlice = createSlice({
             return {...state,cart: tempCart}
         },
         countCartTotals(state) {
-            const {totalCartItems, totalAmount} = state.cart.reduce((total, cartItem) => {
-                const { amount, price } = cartItem
+           
+            const myCart = state.cart.map((item) => item.product)
+            const amount = state.cart.map((item) => item.quantity)
+
+            const {totalCartItems, totalAmount} = myCart.reduce((total, cartItem) => {
+                const {  price } = cartItem
 
                 total.totalCartItems += amount
                 total.totalAmount += price * amount
