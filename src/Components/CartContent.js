@@ -10,7 +10,7 @@ import styled from 'styled-components'
 const CartContent = () => {
     const cartArray = useSelector(state => state.cart.cart)
     const dispatch = useDispatch()
-    console.log(cartArray)
+    // console.log(cartArray)
 
     const clearCart = () => {
         dispatch(clearWholeCart())
@@ -21,7 +21,7 @@ const CartContent = () => {
             <CartColumns />
             {
                 cartArray.map((item) => {
-                    return <CartItem key={item.id} item={item.product} amount={item.quantity} />
+                    return <CartItem item={item.product} amount={item.quantity} />
                 })
             }
             <hr />

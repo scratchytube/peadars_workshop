@@ -13,35 +13,34 @@ const cartSlice = createSlice({
             state.cart = action.payload
         },
         addToCart(state, action) {
-            
-            const { id, amount, product } = action.payload
-
-            const tempItem = state.cart.find((i) => i.id === id)
-
-            if (tempItem) {
-                const tempCart = state.cart.map((cartItem) => {
-                    if (cartItem.id === id) {
-                        let newAmount = cartItem.amount + amount
-                        if(newAmount > cartItem.stock) {
-                            newAmount = cartItem.stock
-                        }
-                        return {...cartItem, amount: newAmount} 
-                    } else {
-                        return cartItem
-                    }
-                } )
-                return {...state, cart: tempCart}
-            } else {
-                const newItem = {
-                    id, 
-                    name: product.name, 
-                    amount,
-                    image: product.images[0].url, 
-                    price: product.price, 
-                    stock: product.stock 
-                }
-                return {...state,cart:[...state.cart, newItem]}
-            }
+            state.cart = action.payload
+                
+                // this is for updating quantity in the cart
+            // const tempItem = state.cart.find((i) => i.id === id)
+            // if (tempItem) {
+            //     const tempCart = state.cart.map((cartItem) => {
+            //         if (cartItem.id === id) {
+            //             let newAmount = cartItem.amount + amount
+            //             if(newAmount > cartItem.stock) {
+            //                 newAmount = cartItem.stock
+            //             }
+            //             return {...cartItem, amount: newAmount} 
+            //         } else {
+            //             return cartItem
+            //         }
+            //     } )
+            //     return {...state, cart: tempCart}
+            // } else {
+            //     const newItem = {
+            //         id, 
+            //         name: product.name, 
+            //         amount,
+            //         image: product.images[0].url, 
+            //         price: product.price, 
+            //         stock: product.stock 
+            //     }
+            //     return {...state,cart:[...state.cart, newItem]}
+            // }
         },
         removeCartItem(state, action) {
             const tempCart = state.cart.filter((item) => item.id !== action.payload)

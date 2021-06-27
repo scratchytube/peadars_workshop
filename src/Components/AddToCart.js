@@ -6,45 +6,69 @@ import { addToCart } from '../redux/cart'
 import styled from 'styled-components'
 
 const AddToCart = ({ product }) => {
-    const { id, stock } = product
+    const { id } = product
     const cart = useSelector((state) => state.cart.cart)
+    console.log(cart)
+
     const thisCartId = cart.map(c => (c.order_id))
     console.log(parseInt(thisCartId))
+
     const [amount, setAmount ] = useState(1)
     const dispatch = useDispatch()
 
-    const addThisToMyCart = (id, amount, product) => {
-        fetch('')
-        // POST to the product order
-        // PATCH to the product in the product order
-        dispatch(addToCart({id, amount, product}))
+    const addThisToMyCart = (id, product) => {
+        const data = {
+                    order_id: parseInt(thisCartId),
+                    product_id: product.id
+                }
+        fetch('http://localhost:3000/api/v1/productorders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(r => r.json())
+                .then(newProductForCart => {
+                    console.log(newProductForCart)
+                    addingProductToCart(newProductForCart)
+                })
     }
 
-    const increase = () => {
-        setAmount((oldAmount) => {
-            let tempAmount = oldAmount + 1
-            if(tempAmount > stock) {
-                tempAmount = stock
-            }
-            return tempAmount
-        })
-    }
+        const addingProductToCart = (newItem) => {
+            console.log(newItem)
+            const brandNewdata = [ ...cart, newItem,]
+            dispatch(addToCart(brandNewdata))
+        }
 
-    const decrease = () => {
-        setAmount((oldAmount) => {
-            let tempAmount = oldAmount - 1
-            if(tempAmount < 1) {
-                tempAmount = 1
-            }
-            return tempAmount
-        })
-    }
+        //hiding quantity buttons for now
+    // const increase = () => {
+    //     setAmount((oldAmount) => {
+    //         let tempAmount = oldAmount + 1
+    //         if(tempAmount > stock) {
+    //             tempAmount = stock
+    //         }
+    //         return tempAmount
+    //     })
+    // }
+
+    // const decrease = () => {
+    //     setAmount((oldAmount) => {
+    //         let tempAmount = oldAmount - 1
+    //         if(tempAmount < 1) {
+    //             tempAmount = 1
+    //         }
+    //         return tempAmount
+    //     })
+    // }
 
     return (
         <Wrapper>
             <div className="btn-container">
-                <QuantityButtons amount={amount} increase={increase} decrease={decrease}/>
-                <Link to='/cart' className='btn' onClick={() => addThisToMyCart(id, amount, product)} >
+                <QuantityButtons amount={amount} 
+                // increase={increase} decrease={decrease}
+                />
+                <Link to='/cart' className='btn' onClick={() => addThisToMyCart(id, product)} >
                     add to cart
                 </Link>
             </div>
