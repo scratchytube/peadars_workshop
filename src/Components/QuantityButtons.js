@@ -22,15 +22,25 @@ const QuantityButtons = ({ amount, increase, decrease }) => {
 export default QuantityButtons
 
 const Wrapper = styled.div`
-.amount-btns {
-  display: grid;
-  width: 140px;
-  justify-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  h2 {
-    margin-bottom: 0;
-  }
+// hiding quantity buttons for now
+.amount-btn {
+  display: none;
+}
+
+// hiding grid for now
+// .amount-btns {
+//   display: grid;
+//   width: 140px;
+//   justify-items: center;
+//   grid-template-columns: repeat(3, 1fr);
+//   align-items: center;
+//   h2 {
+//     margin-bottom: 0;
+//   }
+// }
+
+.amount {
+  margin-left: 2.75rem;
 }
  
   button {

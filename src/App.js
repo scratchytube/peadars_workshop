@@ -21,10 +21,9 @@ const App = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
   const cart = useSelector(state => state.cart.cart)
+  
   console.log(cart)
-  // const amount = cart.map((item) => item.quantity)
-  // const totalAmt = amount.reduce((a,b) => a + b)
-  // console.log(totalAmt)
+  
 
   // auto login
   useEffect(() => {
