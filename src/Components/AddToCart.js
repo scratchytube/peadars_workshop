@@ -30,17 +30,17 @@ const AddToCart = ({ product }) => {
                     body: JSON.stringify(data)
                 })
                 .then(r => r.json())
-                // .then(newProductForCart => {
-                //     dispatch(addToCart(newProductForCart))
-                    // addingProductToCart(newProductForCart)
-                // })
+                .then(newProductForCart => {
+                    console.log(newProductForCart.product)
+                    addingProductToCart(newProductForCart.product)
+                })
     }
 
-        // const addingProductToCart = (newItem) => {
-        //     console.log(newItem)
-        //     const brandNewdata = [ ...cart, newItem,]
-        //     dispatch(addToCart(brandNewdata))
-        // }
+        const addingProductToCart = (newItem) => {
+            console.log(newItem)
+            const brandNewdata = [ ...cart, newItem,]
+            dispatch(addToCart(brandNewdata))
+        }
 
         //hiding quantity buttons for now
     // const increase = () => {
