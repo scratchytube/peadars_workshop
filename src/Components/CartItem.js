@@ -10,6 +10,7 @@ const CartItem = ({ item }) => {
     const { id, name, image, amount, price } = item
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart.cart)
+    const cartId = useSelector((state) => state.cart.cartId)
 
     // hiding quantity buttons for nows
     // const toggleQuantity = (id, value) => {
@@ -29,6 +30,17 @@ const CartItem = ({ item }) => {
         const goAway = cart.filter((prodId) => prodId.id !== id)
         console.log(goAway)
         
+        fetch(`http://localhost:3000/api/v1/orders/${cartId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(goAway)
+        })
+        .then((r) => r.json())
+        .then(itemToDelete => {
+            console.log(itemToDelete)
+        })
     }
 
 

@@ -20,7 +20,6 @@ function SingleProductPage() {
         stock, 
         images,
     } = productObject   
-    console.log(productObject) 
     
     // single product fetch
     useEffect(() => {

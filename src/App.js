@@ -79,7 +79,6 @@ const App = () => {
         .filter((cart) => cart.user_id === user.id)
         .filter((checked) => checked.checked_out === false)
         const theCart = currentCart[0]
-        console.log(theCart.id, 'disone')
         dispatch(cartOrderId(theCart.id))
         dispatch(defaultCart(theCart.products))
       })

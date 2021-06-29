@@ -26,6 +26,7 @@ const AddToCart = ({ product }) => {
                 })
                 .then(r => r.json())
                 .then(newProductForCart => {
+                    console.log(newProductForCart)
                     addingProductToCart(newProductForCart.product)
                 })
     }
