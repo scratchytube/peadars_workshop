@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { singleProduct } from '../redux/product'
+import product, { singleProduct } from '../redux/product'
 import styled from 'styled-components'
 import { ProductImages, PageHero, AddToCart } from '../Components'
 import { formatPrice } from '../utils/helpers'
@@ -19,7 +19,8 @@ function SingleProductPage() {
         description, 
         stock, 
         images,
-    } = productObject    
+    } = productObject   
+    console.log(productObject) 
     
     // single product fetch
     useEffect(() => {

@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import QuantityButtons from './QuantityButtons'
+import React from 'react'
+// import QuantityButtons from './QuantityButtons'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../redux/cart'
@@ -7,39 +7,40 @@ import styled from 'styled-components'
 
 const AddToCart = ({ product }) => {
     const { id } = product
+    const cartId = useSelector((state) => state.cart.cartId)
     const cart = useSelector((state) => state.cart.cart)
+    console.log(product)
+    console.log(cartId)
     console.log(cart)
 
-    const thisCartId = cart.map(c => (c.order_id))
-    console.log(parseInt(thisCartId))
-
-    const [amount, setAmount ] = useState(1)
+    // const [amount, setAmount ] = useState(1)
     const dispatch = useDispatch()
 
     const addThisToMyCart = (id, product) => {
+        console.log(product)
         const data = {
-                    order_id: parseInt(thisCartId),
+                    order_id: cartId,
                     product_id: product.id
                 }
         fetch('http://localhost:3000/api/v1/productorders', {
                     method: 'POST',
                     headers: {
-                        'Content-Type' : 'application/json'
+                        'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data)
                 })
                 .then(r => r.json())
-                .then(newProductForCart => {
-                    console.log(newProductForCart)
-                    addingProductToCart(newProductForCart)
-                })
+                // .then(newProductForCart => {
+                //     dispatch(addToCart(newProductForCart))
+                    // addingProductToCart(newProductForCart)
+                // })
     }
 
-        const addingProductToCart = (newItem) => {
-            console.log(newItem)
-            const brandNewdata = [ ...cart, newItem,]
-            dispatch(addToCart(brandNewdata))
-        }
+        // const addingProductToCart = (newItem) => {
+        //     console.log(newItem)
+        //     const brandNewdata = [ ...cart, newItem,]
+        //     dispatch(addToCart(brandNewdata))
+        // }
 
         //hiding quantity buttons for now
     // const increase = () => {
@@ -65,9 +66,9 @@ const AddToCart = ({ product }) => {
     return (
         <Wrapper>
             <div className="btn-container">
-                <QuantityButtons amount={amount} 
-                // increase={increase} decrease={decrease}
-                />
+                {/* <QuantityButtons amount={amount}  */}
+                {/* // increase={increase} decrease={decrease} */}
+                {/* /> */}
                 <Link to='/cart' className='btn' onClick={() => addThisToMyCart(id, product)} >
                     add to cart
                 </Link>
@@ -81,7 +82,7 @@ export default AddToCart
 const Wrapper = styled.section`
 margin-top: 2rem;
 .btn {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     width: 140px;
 }
 // .amount-btns {

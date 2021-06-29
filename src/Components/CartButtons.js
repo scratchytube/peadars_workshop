@@ -10,9 +10,10 @@ import { FaShoppingCart, FaUserPlus, FaUserMinus } from 'react-icons/fa'
 
 const CartButtons = () => {
     const dispatch = useDispatch()
-    const itemInCart = useSelector((state) => state.cart.totalCartItems)
     const cart = useSelector(state => state.cart.cart)
     const user = useSelector(state => state.user.user)
+    const itemInCart = useSelector((state) => state.cart.totalCartItems)
+    console.log(itemInCart)
 
     const logout = () => {
         localStorage.removeItem("token");

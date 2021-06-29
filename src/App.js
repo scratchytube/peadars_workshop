@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { allProducts, featuredProductsFetch, filteredProducts } from './redux/product'
 import { currentUser } from './redux/user'
-import { defaultCart } from './redux/cart'
+import { defaultCart, cartOrderId } from './redux/cart'
 import { Route, Switch } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './Components'
 import { 
@@ -72,17 +72,34 @@ const App = () => {
   // autoLoads the cart upon login
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:3000/api/v1/productorders`)
+      fetch(`http://localhost:3000/api/v1/orders/`)
       .then(r => r.json())
-      .then(mainCart => {
-        const misterCart = [...mainCart]
-        .filter((cart) => cart.order.user_id === user.id)
-        .filter((checked) => checked.order.checked_out === false)
-        console.log(misterCart)
-        dispatch(defaultCart(misterCart))
+      .then(misterCart => {
+        const currentCart = [...misterCart]
+        .filter((cart) => cart.user_id === user.id)
+        .filter((checked) => checked.checked_out === false)
+        const theCart = currentCart[0]
+        dispatch(cartOrderId(theCart.id))
+        dispatch(defaultCart(theCart.products))
       })
     }
   }, [dispatch, user])
+
+  // autoLoads the cart upon login
+  // useEffect(() => {
+  //   if (user) {
+  //     fetch(`http://localhost:3000/api/v1/productorders`)
+  //     .then(r => r.json())
+  //     .then(mainCart => {
+  //       console.log(mainCart)
+  //       const misterCart = [...mainCart]
+  //       .filter((cart) => cart.order.user_id === user.id)
+  //       .filter((checked) => checked.order.checked_out === false)
+  //       console.log(misterCart)
+  //       dispatch(defaultCart(misterCart))
+  //     })
+  //   }
+  // }, [dispatch, user])
 
   return (
     <div>

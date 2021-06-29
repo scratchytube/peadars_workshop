@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { currentUser } from '../redux/user'
-import { defaultCart } from '../redux/cart'
+import { defaultCart, cartOrderId } from '../redux/cart'
 import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -38,33 +38,34 @@ const Login = ({setShowLogin}) => {
         })
     }
 
-    // const setDefaultCart = (loggedInUser) => {
-    //     fetch(`http://localhost:3000/api/v1/orders/`)
-    //     .then(r => r.json())
-    //     .then(kingCart => {
-    //         const cartCart = [...kingCart]
-    //         .filter((cart) => cart.user_id === loggedInUser.id)
-    //         .filter((checked) => checked.checked_out === false)
-    //         const first = cartCart[0]
-    //         console.log(first)
-            
-    //         dispatch(defaultCart(first.products))
-    //     })
-    // }
-
-    const setDefaultCart = loggedInUser => {
-        fetch(`http://localhost:3000/api/v1/productorders`)
+    const setDefaultCart = (loggedInUser) => {
+        fetch(`http://localhost:3000/api/v1/orders/`)
         .then(r => r.json())
         .then(kingCart => {
+            console.log(kingCart)
             const cartCart = [...kingCart]
-            .filter((cart) => cart.order.user_id === loggedInUser.id)
-            .filter((checked) => checked.order.checked_out === false)
-            console.log(cartCart)
-            dispatch(defaultCart(cartCart))
-            // checked.order.checked_out === false
-            // dispatch(defaultCart(cartCart))
+            .filter((cart) => cart.user_id === loggedInUser.id)
+            .filter((checked) => checked.checked_out === false)
+            const first = cartCart[0]
+            console.log(first.id)
+            console.log(first.products)
+            dispatch(cartOrderId(first.id))
+            dispatch(defaultCart(first.products))
         })
     }
+
+    // const setDefaultCart = loggedInUser => {
+    //     fetch(`http://localhost:3000/api/v1/productorders`)
+    //     .then(r => r.json())
+    //     .then(kingCart => {
+    //         console.log(kingCart)
+    //         const cartCart = [...kingCart]
+    //         .filter((cart) => cart.order.user_id === loggedInUser.id)
+    //         .filter((checked) => checked.order.checked_out === false)
+    //         console.log(cartCart)
+    //         dispatch(defaultCart(cartCart))
+    //     })
+    // }
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value})

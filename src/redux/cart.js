@@ -4,6 +4,7 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         cart: [],
+        cartId: null,
         totalCartItems: 0,
         totalAmount: 0,
         shippingFee: 534,
@@ -11,6 +12,9 @@ const cartSlice = createSlice({
     reducers: {
         defaultCart(state, action) {
             state.cart = action.payload
+        },
+        cartOrderId(state, action) {
+            state.cartId = action.payload
         },
         addToCart(state, action) {
             state.cart = action.payload
@@ -75,10 +79,10 @@ const cartSlice = createSlice({
         },
         countCartTotals(state) {
            
-            const myCart = state.cart.map((item) => item.product)
+            // const myCart = state.cart.map((item) => item.products)
             
-            const {totalCartItems, totalAmount} = myCart.reduce((total, cartItem) => {
-                const {  price, amount } = cartItem
+            const {totalCartItems, totalAmount} = state.cart.reduce((total, cartItem) => {
+                const { amount, price } = cartItem
 
                 total.totalCartItems += amount
                 total.totalAmount += price * amount
@@ -92,5 +96,5 @@ const cartSlice = createSlice({
     }
 })
 
-export const { addToCart, defaultCart, removeCartItem, clearWholeCart, toggleAmount, countCartTotals } = cartSlice.actions
+export const { addToCart, defaultCart, cartOrderId, removeCartItem, clearWholeCart, toggleAmount, countCartTotals } = cartSlice.actions
 export default cartSlice.reducer

@@ -8,6 +8,8 @@ import { FaTrash } from 'react-icons/fa'
 
 const CartItem = ({ item }) => {
     const { id, name, image, amount, price } = item
+    console.log(item)
+    console.log(name)
     const dispatch = useDispatch()
 
     // hiding quantity buttons for nows
