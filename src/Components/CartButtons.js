@@ -13,7 +13,6 @@ const CartButtons = () => {
     const cart = useSelector(state => state.cart.cart)
     const user = useSelector(state => state.user.user)
     const itemInCart = useSelector((state) => state.cart.totalCartItems)
-    console.log(itemInCart)
 
     const logout = () => {
         localStorage.removeItem("token");

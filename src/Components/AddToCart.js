@@ -9,15 +9,10 @@ const AddToCart = ({ product }) => {
     const { id } = product
     const cartId = useSelector((state) => state.cart.cartId)
     const cart = useSelector((state) => state.cart.cart)
-    console.log(product)
-    console.log(cartId)
-    console.log(cart)
 
-    // const [amount, setAmount ] = useState(1)
     const dispatch = useDispatch()
 
     const addThisToMyCart = (id, product) => {
-        console.log(product)
         const data = {
                     order_id: cartId,
                     product_id: product.id
@@ -31,13 +26,11 @@ const AddToCart = ({ product }) => {
                 })
                 .then(r => r.json())
                 .then(newProductForCart => {
-                    console.log(newProductForCart.product)
                     addingProductToCart(newProductForCart.product)
                 })
     }
 
         const addingProductToCart = (newItem) => {
-            console.log(newItem)
             const brandNewdata = [ ...cart, newItem,]
             dispatch(addToCart(brandNewdata))
         }
@@ -66,9 +59,7 @@ const AddToCart = ({ product }) => {
     return (
         <Wrapper>
             <div className="btn-container">
-                {/* <QuantityButtons amount={amount}  */}
-                {/* // increase={increase} decrease={decrease} */}
-                {/* /> */}
+                {/* <QuantityButtons amount={amount} increase={increase} decrease={decrease}/> */}
                 <Link to='/cart' className='btn' onClick={() => addThisToMyCart(id, product)} >
                     add to cart
                 </Link>

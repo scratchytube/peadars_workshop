@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { removeCartItem } from '../redux/cart'
 import QuantityButtons from './QuantityButtons'
 import { formatPrice } from '../utils/helpers'
@@ -8,9 +8,8 @@ import { FaTrash } from 'react-icons/fa'
 
 const CartItem = ({ item }) => {
     const { id, name, image, amount, price } = item
-    console.log(item)
-    console.log(name)
     const dispatch = useDispatch()
+    const cart = useSelector((state) => state.cart.cart)
 
     // hiding quantity buttons for nows
     // const toggleQuantity = (id, value) => {
@@ -25,7 +24,11 @@ const CartItem = ({ item }) => {
     // }
     
     const removeItem = (id) => {
-        dispatch(removeCartItem(id))
+        console.log(id)
+        console.log(cart)
+        const goAway = cart.filter((prodId) => prodId.id !== id)
+        console.log(goAway)
+        
     }
 
 
