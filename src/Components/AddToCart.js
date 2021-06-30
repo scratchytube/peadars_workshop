@@ -42,7 +42,7 @@ const AddToCart = ({ product }) => {
         const addingProductToCart = (newItem) => {
             const brandNewdata = [ ...cart, newItem,]
             console.log(brandNewdata)
-            // dispatch(addToCart(brandNewdata))
+            dispatch(addToCart(brandNewdata))
         }
 
         //hiding quantity buttons for now
