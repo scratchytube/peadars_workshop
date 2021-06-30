@@ -19,9 +19,16 @@ const cartSlice = createSlice({
         },
         fullCartObject(state, action) {
             state.completeCartObject = action.payload
+            // state.cartId = action.payload.id
+            // state.cartId = action.payload.id
+            // state.cart = action.payload.products
         },
         addToCart(state, action) {
-            state.cart = action.payload
+            const newItem = action.payload
+            console.log(newItem)
+
+            state.cart = {...state,cart:[...state.cart, newItem]}
+            // state.cart = {...state,cart:[...state.cart, newItem]}
                 
                 // this is for updating quantity in the cart
             // const tempItem = state.cart.find((i) => i.id === id)
@@ -83,7 +90,9 @@ const cartSlice = createSlice({
         },
         countCartTotals(state) {
            
-            // const myCart = state.cart.map((item) => item.products)
+            // const myCart = state.cart.products
+            // .map((item) => item.products)
+            // console.log(myCart)
             
             const {totalCartItems, totalAmount} = state.cart.reduce((total, cartItem) => {
                 const { amount, price } = cartItem

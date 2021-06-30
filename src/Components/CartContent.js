@@ -8,7 +8,8 @@ import CartTotals from './CartTotals'
 import styled from 'styled-components'
 
 const CartContent = () => {
-    const cartArray = useSelector(state => state.cart.cart)
+    const cartArray = useSelector(state => state.cart.completeCartObject)
+    console.log(cartArray.products)
     const dispatch = useDispatch()
 
     const clearCart = () => {
@@ -19,7 +20,7 @@ const CartContent = () => {
         <Wrapper className='section section-center'>
             <CartColumns />
             {
-                cartArray.map((singleProduct) => {
+                cartArray.products.map((singleProduct) => {
                     return <CartItem key = {singleProduct.id} item={singleProduct} />
                 })
             }

@@ -9,11 +9,14 @@ import { FaTrash } from 'react-icons/fa'
 const CartItem = ({ item }) => {
     const { id, name, image, amount, price } = item
     const dispatch = useDispatch()
-    const cart = useSelector((state) => state.cart.cart)
-    const cartId = useSelector((state) => state.cart.cartId)
     const superCart = useSelector((state) => state.cart.completeCartObject)
-    console.log(superCart)
+    const cartId = useSelector((state) => state.cart.cartId)
+ 
     console.log(superCart.product_orders)
+    const superCartsProductOrders = superCart.product_orders 
+    
+    const superCartsProducts = superCart.products
+    console.log(superCartsProducts)
 
     
 
@@ -31,16 +34,30 @@ const CartItem = ({ item }) => {
     
     const removeItem = (id) => {
 
-        const objectToDelete = superCart.product_orders.filter((item) => item.product_id === id)
-        console.log(objectToDelete[0].id)
+        const objectToDelete = superCartsProductOrders.filter((item) => item.product_id === id)
+        const hereDeleteThisId = objectToDelete[0].id
+        console.log(hereDeleteThisId)
+
+        // we delete the id that comes from 'here' from product orders
+        //we take the return and compare it with our superCarts product orders
+        // we filter out the supercarts product orders that dont match the id of the deleted object
+        // we set the new default cart to the supercarts products
         
-        fetch(`http://localhost:3000/api/v1/productorders/${objectToDelete[0].id}`, {
+        fetch(`http://localhost:3000/api/v1/productorders/${hereDeleteThisId}`, {
             method: 'DELETE',
         })
         .then((r) => r.json())
         .then((itemToDelete) => {
-            console.log(itemToDelete)
+            handleDelete(itemToDelete)
+        
         })
+    }
+
+    const handleDelete = (deleteThis) => {
+        console.log(deleteThis)
+        // const newCart = [...superCart].product_orders.filter((p) => p.id !== deleteThis.id)
+        // console.log(newCart)
+        // dispatch(newCartAfterDelete(newCart))
     }
 
 

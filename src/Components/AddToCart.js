@@ -9,6 +9,8 @@ const AddToCart = ({ product }) => {
     const { id } = product
     const cartId = useSelector((state) => state.cart.cartId)
     const cart = useSelector((state) => state.cart.cart)
+    
+    
 
     const dispatch = useDispatch()
 
@@ -27,14 +29,16 @@ const AddToCart = ({ product }) => {
                 .then(r => r.json())
                 .then(newProductForCart => {
                     console.log(newProductForCart)
-                    addingProductToCart(newProductForCart.product)
+                    dispatch(addToCart(newProductForCart.product))
+                    // dispatch(addToCart(newProductForCart.product))
                 })
     }
 
-        const addingProductToCart = (newItem) => {
-            const brandNewdata = [ ...cart, newItem,]
-            dispatch(addToCart(brandNewdata))
-        }
+        // const addingProductToCart = (newItem) => {
+        //     const brandNewdata = [ ...cart, newItem,]
+        //     console.log(brandNewdata)
+        //     dispatch(addToCart(brandNewdata))
+        // }
 
         //hiding quantity buttons for now
     // const increase = () => {
