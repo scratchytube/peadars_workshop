@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { allProducts, featuredProductsFetch, filteredProducts } from './redux/product'
 import { currentUser } from './redux/user'
-import { defaultCart, cartOrderId, fullCartObject, myProductOrders } from './redux/cart'
+import { defaultCart, cartOrderId, myProductOrders } from './redux/cart'
 import { Route, Switch } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './Components'
 import { 
@@ -20,6 +20,9 @@ import {
 const App = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
+  const cart = useSelector(state => state.cart.cart)
+  
+  console.log(cart)
   
 
   // auto login
@@ -82,22 +85,6 @@ const App = () => {
       })
     }
   }, [dispatch, user])
-
-  // autoLoads the cart upon login
-  // useEffect(() => {
-  //   if (user) {
-  //     fetch(`http://localhost:3000/api/v1/productorders`)
-  //     .then(r => r.json())
-  //     .then(mainCart => {
-  //       console.log(mainCart)
-  //       const misterCart = [...mainCart]
-  //       .filter((cart) => cart.order.user_id === user.id)
-  //       .filter((checked) => checked.order.checked_out === false)
-  //       console.log(misterCart)
-  //       dispatch(defaultCart(misterCart))
-  //     })
-  //   }
-  // }, [dispatch, user])
 
   return (
     <div>

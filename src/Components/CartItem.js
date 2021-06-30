@@ -10,11 +10,7 @@ const CartItem = ({ item }) => {
     const { id, name, image, amount, price } = item
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart.cart)
-    // const cartId = useSelector((state) => state.cart.cartId)
     const productOrders = useSelector(state => state.cart.productOrdersArray)
-
-    console.log(cart, 'cartArray')
-    console.log(productOrders, 'productOrderArray')
 
     
 
@@ -33,8 +29,6 @@ const CartItem = ({ item }) => {
     const removeItem = (id) => {
 
         const objectToDelete = productOrders.filter((item) => item.product_id === id)
-        console.log(objectToDelete[0])
-        console.log(objectToDelete[0].id)
         const deleteThisId = objectToDelete[0].id
         
         fetch(`http://localhost:3000/api/v1/productorders/${deleteThisId}`, {
@@ -42,7 +36,6 @@ const CartItem = ({ item }) => {
         })
         .then((r) => r.json())
         .then((itemToDelete) => {
-            console.log(itemToDelete)
             deleteThisFromProductArray(itemToDelete)
             deleteThisFromCart(itemToDelete.product)
         })
@@ -50,13 +43,11 @@ const CartItem = ({ item }) => {
 
     const deleteThisFromProductArray = (deleteArr) => {
         const newArray = [...productOrders].filter(p => p.id !== deleteArr.id)
-        console.log(newArray, 'newArray')
         dispatch(myProductOrders(newArray))
     }
 
     const deleteThisFromCart = (deleteItem) => {
         const newCart = [...cart].filter(good => good.id !== deleteItem.id)
-        console.log(newCart, 'newCart')
         dispatch(addToCart(newCart))
     }
 

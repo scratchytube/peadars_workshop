@@ -34,7 +34,6 @@ const Signup = ({setShowLogin }) => {
                 const { user, token} = newUser
                 localStorage.setItem('token', token)
                 createCart(user)
-                console.log(user.id)
                 dispatch(currentUser(user))
                 history.push('/')
             }
@@ -42,7 +41,6 @@ const Signup = ({setShowLogin }) => {
     }
 
     const createCart = theNewUser => {
-        console.log(theNewUser.id)
         fetch('http://localhost:3000/api/v1/orders', {
             method: 'POST',
             headers: {
