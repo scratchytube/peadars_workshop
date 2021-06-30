@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeCartItem } from '../redux/cart'
+import { addToCart, myProductOrders } from '../redux/cart'
 import QuantityButtons from './QuantityButtons'
 import { formatPrice } from '../utils/helpers'
 import { FaTrash } from 'react-icons/fa'
@@ -10,7 +10,7 @@ const CartItem = ({ item }) => {
     const { id, name, image, amount, price } = item
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart.cart)
-    const cartId = useSelector((state) => state.cart.cartId)
+    // const cartId = useSelector((state) => state.cart.cartId)
     const productOrders = useSelector(state => state.cart.productOrdersArray)
 
     console.log(cart, 'cartArray')
@@ -35,14 +35,29 @@ const CartItem = ({ item }) => {
         const objectToDelete = productOrders.filter((item) => item.product_id === id)
         console.log(objectToDelete[0])
         console.log(objectToDelete[0].id)
+        const deleteThisId = objectToDelete[0].id
         
-        // fetch(`http://localhost:3000/api/v1/productorders/${objectToDelete[0].id}`, {
-        //     method: 'DELETE',
-        // })
-        // .then((r) => r.json())
-        // .then((itemToDelete) => {
-        //     console.log(itemToDelete)
-        // })
+        fetch(`http://localhost:3000/api/v1/productorders/${deleteThisId}`, {
+            method: 'DELETE',
+        })
+        .then((r) => r.json())
+        .then((itemToDelete) => {
+            console.log(itemToDelete)
+            deleteThisFromProductArray(itemToDelete)
+            deleteThisFromCart(itemToDelete.product)
+        })
+    }
+
+    const deleteThisFromProductArray = (deleteArr) => {
+        const newArray = [...productOrders].filter(p => p.id !== deleteArr.id)
+        console.log(newArray, 'newArray')
+        dispatch(myProductOrders(newArray))
+    }
+
+    const deleteThisFromCart = (deleteItem) => {
+        const newCart = [...cart].filter(good => good.id !== deleteItem.id)
+        console.log(newCart, 'newCart')
+        dispatch(addToCart(newCart))
     }
 
 

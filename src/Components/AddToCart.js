@@ -28,7 +28,6 @@ const AddToCart = ({ product }) => {
                 })
                 .then(r => r.json())
                 .then(newProductForCart => {
-                    console.log(newProductForCart)
                     addingProductOrder(newProductForCart)
                     addingProductToCart(newProductForCart.product)
                 })
@@ -41,7 +40,6 @@ const AddToCart = ({ product }) => {
 
         const addingProductToCart = (newItem) => {
             const brandNewdata = [ ...cart, newItem,]
-            console.log(brandNewdata)
             dispatch(addToCart(brandNewdata))
         }
 
