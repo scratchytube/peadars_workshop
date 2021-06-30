@@ -10,6 +10,7 @@ import styled from 'styled-components'
 const CartContent = () => {
     const cartArray = useSelector(state => state.cart.cart)
     const dispatch = useDispatch()
+    console.log(cartArray)
 
     const clearCart = () => {
         dispatch(clearWholeCart())
@@ -20,6 +21,7 @@ const CartContent = () => {
             <CartColumns />
             {
                 cartArray.map((singleProduct) => {
+                   console.log(singleProduct)
                     return <CartItem key = {singleProduct.id} item={singleProduct} />
                 })
             }

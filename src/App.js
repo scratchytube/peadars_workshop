@@ -76,7 +76,6 @@ const App = () => {
         .filter((cart) => cart.user_id === user.id)
         .filter((checked) => checked.checked_out === false)
         const theCart = currentCart[0]
-        dispatch(fullCartObject(theCart))
         dispatch(cartOrderId(theCart.id))
         dispatch(defaultCart(theCart.products))
         dispatch(myProductOrders(theCart.product_orders))

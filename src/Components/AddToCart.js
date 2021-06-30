@@ -41,7 +41,8 @@ const AddToCart = ({ product }) => {
 
         const addingProductToCart = (newItem) => {
             const brandNewdata = [ ...cart, newItem,]
-            dispatch(addToCart(brandNewdata))
+            console.log(brandNewdata)
+            // dispatch(addToCart(brandNewdata))
         }
 
         //hiding quantity buttons for now
