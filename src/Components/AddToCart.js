@@ -2,13 +2,15 @@ import React from 'react'
 // import QuantityButtons from './QuantityButtons'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../redux/cart'
+import { addToCart, myProductOrders } from '../redux/cart'
 import styled from 'styled-components'
 
 const AddToCart = ({ product }) => {
     const { id } = product
     const cartId = useSelector((state) => state.cart.cartId)
     const cart = useSelector((state) => state.cart.cart)
+    const productOrders = useSelector(state => state.cart.productOrdersArray)
+
 
     const dispatch = useDispatch()
 
@@ -26,9 +28,15 @@ const AddToCart = ({ product }) => {
                 })
                 .then(r => r.json())
                 .then(newProductForCart => {
-                    console.log(newProductForCart.product)
+                    console.log(newProductForCart)
+                    addingProductOrder(newProductForCart)
                     addingProductToCart(newProductForCart.product)
                 })
+    }
+
+    const addingProductOrder = (newProOrd) => {
+        const brandNewProductOrderArray = [...productOrders, newProOrd]
+        dispatch(myProductOrders(brandNewProductOrderArray))
     }
 
         const addingProductToCart = (newItem) => {

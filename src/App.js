@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { allProducts, featuredProductsFetch, filteredProducts } from './redux/product'
 import { currentUser } from './redux/user'
-import { defaultCart, cartOrderId } from './redux/cart'
+import { defaultCart, cartOrderId, fullCartObject, myProductOrders } from './redux/cart'
 import { Route, Switch } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './Components'
 import { 
@@ -20,9 +20,6 @@ import {
 const App = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
-  const cart = useSelector(state => state.cart.cart)
-  
-  console.log(cart)
   
 
   // auto login
@@ -81,6 +78,7 @@ const App = () => {
         const theCart = currentCart[0]
         dispatch(cartOrderId(theCart.id))
         dispatch(defaultCart(theCart.products))
+        dispatch(myProductOrders(theCart.product_orders))
       })
     }
   }, [dispatch, user])

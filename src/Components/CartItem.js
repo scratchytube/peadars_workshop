@@ -11,11 +11,10 @@ const CartItem = ({ item }) => {
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart.cart)
     const cartId = useSelector((state) => state.cart.cartId)
-    const superCart = useSelector((state) => state.cart.completeCartObject)
-    console.log(cart)
-    console.log(superCart)
-    console.log(superCart.product_orders)
-    
+    const productOrders = useSelector(state => state.cart.productOrdersArray)
+
+    console.log(cart, 'cartArray')
+    console.log(productOrders, 'productOrderArray')
 
     
 
@@ -33,30 +32,17 @@ const CartItem = ({ item }) => {
     
     const removeItem = (id) => {
 
-        const objectToDelete = superCart.product_orders.filter((item) => item.product_id === id)
-        const here = objectToDelete[0].id
-        console.log(here)
-
-        // we delete the id that comes from 'here' from product orders
-        //we take the return and compare it with our superCarts product orders
-        // we filter out the supercarts product orders that dont match the id of the deleted object
-        // we set the new default cart to the supercarts products
+        const objectToDelete = productOrders.filter((item) => item.product_id === id)
+        console.log(objectToDelete[0])
+        console.log(objectToDelete[0].id)
         
-        // fetch(`http://localhost:3000/api/v1/productorders/${here}`, {
+        // fetch(`http://localhost:3000/api/v1/productorders/${objectToDelete[0].id}`, {
         //     method: 'DELETE',
         // })
         // .then((r) => r.json())
         // .then((itemToDelete) => {
-        //     handleDelete(itemToDelete)
-        
+        //     console.log(itemToDelete)
         // })
-    }
-
-    const handleDelete = (deleteThis) => {
-
-        // const newCart = [...superCart].product_orders.filter((p) => p.id !== deleteThis.id)
-        // console.log(newCart)
-        // dispatch(newCartAfterDelete(newCart))
     }
 
 
