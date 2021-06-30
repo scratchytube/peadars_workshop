@@ -11,6 +11,11 @@ const CartItem = ({ item }) => {
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart.cart)
     const cartId = useSelector((state) => state.cart.cartId)
+    const superCart = useSelector((state) => state.cart.completeCartObject)
+    console.log(superCart)
+    console.log(superCart.product_orders)
+
+    
 
     // hiding quantity buttons for nows
     // const toggleQuantity = (id, value) => {
@@ -25,20 +30,15 @@ const CartItem = ({ item }) => {
     // }
     
     const removeItem = (id) => {
-        console.log(id)
-        console.log(cart)
-        const goAway = cart.filter((prodId) => prodId.id !== id)
-        console.log(goAway)
+
+        const objectToDelete = superCart.product_orders.filter((item) => item.product_id === id)
+        console.log(objectToDelete[0].id)
         
-        fetch(`http://localhost:3000/api/v1/orders/${cartId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(goAway)
+        fetch(`http://localhost:3000/api/v1/productorders/${objectToDelete[0].id}`, {
+            method: 'DELETE',
         })
         .then((r) => r.json())
-        .then(itemToDelete => {
+        .then((itemToDelete) => {
             console.log(itemToDelete)
         })
     }

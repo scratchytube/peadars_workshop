@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { allProducts, featuredProductsFetch, filteredProducts } from './redux/product'
 import { currentUser } from './redux/user'
-import { defaultCart, cartOrderId } from './redux/cart'
+import { defaultCart, cartOrderId, fullCartObject } from './redux/cart'
 import { Route, Switch } from 'react-router-dom'
 import { Navbar, Sidebar, Footer } from './Components'
 import { 
@@ -79,6 +79,7 @@ const App = () => {
         .filter((cart) => cart.user_id === user.id)
         .filter((checked) => checked.checked_out === false)
         const theCart = currentCart[0]
+        dispatch(fullCartObject(theCart))
         dispatch(cartOrderId(theCart.id))
         dispatch(defaultCart(theCart.products))
       })
