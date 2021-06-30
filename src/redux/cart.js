@@ -27,7 +27,9 @@ const cartSlice = createSlice({
             const newItem = action.payload
             console.log(newItem)
 
-            state.cart = {...state,cart:[...state.cart, newItem]}
+            state.completeCartObject = {...state,completeCartObject:{...state.completeCartObject.product_orders, newItem } }
+
+            // state.completeCartObject = {...state,completeCartObject:[...state.product_order, newItem]}
             // state.cart = {...state,cart:[...state.cart, newItem]}
                 
                 // this is for updating quantity in the cart

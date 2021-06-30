@@ -11,14 +11,10 @@ const CartItem = ({ item }) => {
     const dispatch = useDispatch()
     const superCart = useSelector((state) => state.cart.completeCartObject)
     const cartId = useSelector((state) => state.cart.cartId)
- 
-    console.log(superCart.product_orders)
-    const superCartsProductOrders = superCart.product_orders 
-    
-    const superCartsProducts = superCart.products
-    console.log(superCartsProducts)
-
-    
+    const cart = useSelector(state => state.cart.cart)
+    console.log(superCart)
+    console.log(cart)
+    console.log(cartId)    
 
     // hiding quantity buttons for nows
     // const toggleQuantity = (id, value) => {
@@ -34,23 +30,23 @@ const CartItem = ({ item }) => {
     
     const removeItem = (id) => {
 
-        const objectToDelete = superCartsProductOrders.filter((item) => item.product_id === id)
-        const hereDeleteThisId = objectToDelete[0].id
-        console.log(hereDeleteThisId)
+        // const objectToDelete = superCartsProductOrders.filter((item) => item.product_id === id)
+        // const hereDeleteThisId = objectToDelete[0].id
+        // console.log(hereDeleteThisId)
 
         // we delete the id that comes from 'here' from product orders
         //we take the return and compare it with our superCarts product orders
         // we filter out the supercarts product orders that dont match the id of the deleted object
         // we set the new default cart to the supercarts products
         
-        fetch(`http://localhost:3000/api/v1/productorders/${hereDeleteThisId}`, {
-            method: 'DELETE',
-        })
-        .then((r) => r.json())
-        .then((itemToDelete) => {
-            handleDelete(itemToDelete)
+    //     fetch(`http://localhost:3000/api/v1/productorders/${hereDeleteThisId}`, {
+    //         method: 'DELETE',
+    //     })
+    //     .then((r) => r.json())
+    //     .then((itemToDelete) => {
+    //         handleDelete(itemToDelete)
         
-        })
+    //     })
     }
 
     const handleDelete = (deleteThis) => {
