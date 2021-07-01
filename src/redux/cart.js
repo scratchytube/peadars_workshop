@@ -57,30 +57,30 @@ const cartSlice = createSlice({
         clearWholeCart(state) {
             state.cart = []
         },
-        toggleAmount(state, action) {
-            const {id, value} = action.payload
-            console.log(action.payload)
-            const tempCart = state.cart.map((item) => {
-                if (item.id === id) {
-                    if(value === 'increase') {
-                        let newAmount = item.amount + 1
-                        if (newAmount > item.stock) {
-                            newAmount = item.stock
-                        }
-                        return {...item, amount: newAmount}
-                    }
-                    if (value === 'decrease') {
-                        let newAmount = item.amount - 1
-                        if (newAmount < 1) {
-                            newAmount = 1
-                        }
-                        return { ...item, amount: newAmount }
-                    }
-                } 
-                return item
-            })
-            return {...state,cart: tempCart}
-        },
+        // toggleAmount(state, action) {
+        //     const {id, value} = action.payload
+        //     console.log(action.payload)
+        //     const tempCart = state.cart.map((item) => {
+        //         if (item.id === id) {
+        //             if(value === 'increase') {
+        //                 let newAmount = item.amount + 1
+        //                 if (newAmount > item.stock) {
+        //                     newAmount = item.stock
+        //                 }
+        //                 return {...item, amount: newAmount}
+        //             }
+        //             if (value === 'decrease') {
+        //                 let newAmount = item.amount - 1
+        //                 if (newAmount < 1) {
+        //                     newAmount = 1
+        //                 }
+        //                 return { ...item, amount: newAmount }
+        //             }
+        //         } 
+        //         return item
+        //     })
+        //     return {...state,cart: tempCart}
+        // },
         countCartTotals(state) {
             
             const {totalCartItems, totalAmount} = state.cart.reduce((total, cartItem) => {
@@ -98,5 +98,5 @@ const cartSlice = createSlice({
     }
 })
 
-export const { addToCart, myProductOrders, defaultCart, cartOrderId, removeCartItem, clearWholeCart, toggleAmount, countCartTotals } = cartSlice.actions
+export const { addToCart, myProductOrders, defaultCart, cartOrderId, removeCartItem, clearWholeCart, countCartTotals } = cartSlice.actions
 export default cartSlice.reducer
