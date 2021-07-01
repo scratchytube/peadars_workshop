@@ -76,12 +76,11 @@ const App = () => {
         .filter((cart) => cart.user_id === user.id)
         .filter((checked) => checked.checked_out === false)
         const theCart = currentCart[0]
-        console.log(theCart)
         dispatch(defaultCart(theCart.products))
         dispatch(myProductOrders(theCart.product_orders))
         dispatch(cartOrderId(theCart.id))
       })
-      }, 1000)
+      }, 1500)
     }
   }, [dispatch, user])
 

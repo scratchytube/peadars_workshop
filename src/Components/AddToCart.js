@@ -10,27 +10,51 @@ const AddToCart = ({ product }) => {
     const cartId = useSelector((state) => state.cart.cartId)
     const cart = useSelector((state) => state.cart.cart)
     const productOrders = useSelector(state => state.cart.productOrdersArray)
+    console.log(cart)
+    console.log(productOrders)
 
 
     const dispatch = useDispatch()
 
     const addThisToMyCart = (id, product) => {
-        const data = {
-                    order_id: cartId,
-                    product_id: product.id
-                }
-        fetch('http://localhost:3000/api/v1/productorders', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(r => r.json())
-                .then(newProductForCart => {
-                    addingProductOrder(newProductForCart)
-                    addingProductToCart(newProductForCart.product)
-                })
+        const inHere = productOrders.find((p) => p.product_id === product.id)
+        
+        if (!inHere) {
+            const data = {
+                order_id: cartId,
+                product_id: product.id
+            }
+    fetch('http://localhost:3000/api/v1/productorders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(r => r.json())
+            .then(newProductForCart => {
+                addingProductOrder(newProductForCart)
+                addingProductToCart(newProductForCart.product)
+            })
+        } else {
+            return alert('Already in Cart!')
+        }
+        // const data = {
+        //             order_id: cartId,
+        //             product_id: product.id
+        //         }
+        // fetch('http://localhost:3000/api/v1/productorders', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //             },
+        //             body: JSON.stringify(data)
+        //         })
+        //         .then(r => r.json())
+        //         .then(newProductForCart => {
+        //             addingProductOrder(newProductForCart)
+        //             addingProductToCart(newProductForCart.product)
+        //         })
     }
 
     const addingProductOrder = (newProOrd) => {
