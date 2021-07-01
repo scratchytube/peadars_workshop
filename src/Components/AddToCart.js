@@ -39,22 +39,7 @@ const AddToCart = ({ product }) => {
         } else {
             return alert('Already in Cart!')
         }
-        // const data = {
-        //             order_id: cartId,
-        //             product_id: product.id
-        //         }
-        // fetch('http://localhost:3000/api/v1/productorders', {
-        //             method: 'POST',
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //             },
-        //             body: JSON.stringify(data)
-        //         })
-        //         .then(r => r.json())
-        //         .then(newProductForCart => {
-        //             addingProductOrder(newProductForCart)
-        //             addingProductToCart(newProductForCart.product)
-        //         })
+        
     }
 
     const addingProductOrder = (newProOrd) => {
