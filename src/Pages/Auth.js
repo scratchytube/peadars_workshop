@@ -12,7 +12,6 @@ function Auth() {
     return (
         <div>
             <Login setShowLogin={setShowLogin}/>        
-            {/* <Signup /> */}
         </div>
     )
 }

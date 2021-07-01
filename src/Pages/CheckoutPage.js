@@ -7,7 +7,7 @@ const CheckoutPage = () => {
         <main>
             <PageHero title='checkout' />
             <Wrapper className='page'>
-            <h1>checkmeout heree</h1>
+            <h1>checkout coming soon!</h1>
             </Wrapper>
         </main>
     )

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { filteredProducts, updateFilters, clearFilters, sorter } from '../redux/product'
-// import { formatPrice } from '../utils/helpers'
 import styled from 'styled-components'
 
 const Filters = () => {

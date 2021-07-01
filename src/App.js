@@ -83,21 +83,6 @@ const App = () => {
     }
   }, [dispatch, user])
 
-  // autoLoads the cart upon login
-  // useEffect(() => {
-  //   if (user) {
-  //     fetch(`http://localhost:3000/api/v1/productorders`)
-  //     .then(r => r.json())
-  //     .then(mainCart => {
-  //       console.log(mainCart)
-  //       const misterCart = [...mainCart]
-  //       .filter((cart) => cart.order.user_id === user.id)
-  //       .filter((checked) => checked.order.checked_out === false)
-  //       console.log(misterCart)
-  //       dispatch(defaultCart(misterCart))
-  //     })
-  //   }
-  // }, [dispatch, user])
 
   return (
     <div>

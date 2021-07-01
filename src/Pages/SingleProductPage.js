@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import product, { singleProduct } from '../redux/product'
+import { singleProduct } from '../redux/product'
 import styled from 'styled-components'
 import { ProductImages, PageHero, AddToCart } from '../Components'
 import { formatPrice } from '../utils/helpers'

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { currentUser } from '../redux/user'
 import { Link, useHistory } from 'react-router-dom'
-import { defaultCart } from '../redux/cart'
 import styled from 'styled-components'
 
 const Signup = ({setShowLogin }) => {
@@ -34,7 +33,6 @@ const Signup = ({setShowLogin }) => {
                 const { user, token} = newUser
                 localStorage.setItem('token', token)
                 createCart(user)
-                console.log(user.id)
                 dispatch(currentUser(user))
                 history.push('/')
             }
@@ -42,7 +40,6 @@ const Signup = ({setShowLogin }) => {
     }
 
     const createCart = theNewUser => {
-        console.log(theNewUser.id)
         fetch('http://localhost:3000/api/v1/orders', {
             method: 'POST',
             headers: {
@@ -55,17 +52,7 @@ const Signup = ({setShowLogin }) => {
             }) 
             .then((r) => r.json())
             .then(console.log)
-        //     .then(currentCart => {
-        //         console.log(currentCart)
-        //         console.log(currentCart.product_orders)
-        //         dispatch(defaultCart(currentCart.product_orders))
-        // })
     }
-    
-        
-
-    
-    
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})

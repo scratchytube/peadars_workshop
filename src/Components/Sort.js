@@ -1,4 +1,4 @@
-import React, {useEffect}  from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { filteredProducts, sorter } from '../redux/product'
 import { toggleView } from '../redux/product'
