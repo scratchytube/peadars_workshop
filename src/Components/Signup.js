@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { currentUser } from '../redux/user'
+import { cartOrderId, defaultCart, myProductOrders } from '../redux/cart'
 import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -51,7 +52,11 @@ const Signup = ({setShowLogin }) => {
                 })
             }) 
             .then((r) => r.json())
-            .then(console.log)
+            .then(cartDetails => {
+                dispatch(cartOrderId(cartDetails.id))
+                dispatch(defaultCart(cartDetails.products))
+                dispatch(myProductOrders(cartDetails.product_orders))
+            })
     }
 
     const handleChange = (e) => {

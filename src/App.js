@@ -21,7 +21,6 @@ const App = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
   
-
   // auto login
   useEffect(() => {
     const token = localStorage.getItem("token")
@@ -69,20 +68,22 @@ const App = () => {
   // autoLoads the cart upon login
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:3000/api/v1/orders/`)
-      .then(r => r.json())
+      setTimeout(() => {
+        fetch(`http://localhost:3000/api/v1/orders/`)
+        .then(r => r.json())
       .then(misterCart => {
         const currentCart = [...misterCart]
         .filter((cart) => cart.user_id === user.id)
         .filter((checked) => checked.checked_out === false)
         const theCart = currentCart[0]
-        dispatch(cartOrderId(theCart.id))
+        console.log(theCart)
         dispatch(defaultCart(theCart.products))
         dispatch(myProductOrders(theCart.product_orders))
+        dispatch(cartOrderId(theCart.id))
       })
+      }, 1000)
     }
   }, [dispatch, user])
-
 
   return (
     <div>
