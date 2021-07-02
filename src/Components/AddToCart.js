@@ -5,16 +5,26 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, myProductOrders } from '../redux/cart'
 import styled from 'styled-components'
 
+
 const AddToCart = ({ product }) => {
     const { id } = product
     const cartId = useSelector((state) => state.cart.cartId)
     const cart = useSelector((state) => state.cart.cart)
+    const user = useSelector(state => state.user.user)
     const productOrders = useSelector(state => state.cart.productOrdersArray)
     console.log(cart)
     console.log(productOrders)
 
 
     const dispatch = useDispatch()
+
+    const dataDirection = (id, pro) => {
+        if (user) {
+            addThisToMyCart(id, pro)
+        } else {
+            addingProductToCart(pro)
+        }
+    }
 
     const addThisToMyCart = (id, product) => {
         const inHere = productOrders.find((p) => p.product_id === product.id)
@@ -77,7 +87,7 @@ const AddToCart = ({ product }) => {
         <Wrapper>
             <div className="btn-container">
                 {/* <QuantityButtons amount={amount} increase={increase} decrease={decrease}/> */}
-                <Link to='/cart' className='btn' onClick={() => addThisToMyCart(id, product)} >
+                <Link to='/cart' className='btn' onClick={() => dataDirection(id, product)} >
                     add to cart
                 </Link>
             </div>
