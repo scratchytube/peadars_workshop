@@ -32,7 +32,7 @@ const Navbar = () => {
                         <Link to='/about'>About</Link>
                     </li>
                     <li>
-                        <Link to='/products'>The Goods</Link>
+                        <Link to='/products'>Shop</Link>
                     </li>
                     { user && 
                     ( <li>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, myProductOrders } from '../redux/cart'
+import { addToCart, myProductOrders, removeCartItem, removeProductOrder } from '../redux/cart'
 import QuantityButtons from './QuantityButtons'
 import { formatPrice } from '../utils/helpers'
 import { FaTrash } from 'react-icons/fa'
@@ -11,6 +11,7 @@ const CartItem = ({ item }) => {
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cart.cart)
     const productOrders = useSelector(state => state.cart.productOrdersArray)
+    const user = useSelector(state => state.user.user)
 
     // hiding quantity buttons for nows
     // const toggleQuantity = (id, value) => {
@@ -23,6 +24,15 @@ const CartItem = ({ item }) => {
     // const decrease = () => {
     //     toggleQuantity(id, 'decrease')
     // }
+
+    const removeThis = id => {
+        if (user) {
+            removeItem(id)
+        } else {
+            dispatch(removeCartItem(id))
+            dispatch(removeProductOrder(id))
+        }
+    }
     
     const removeItem = (id) => {
 
@@ -64,7 +74,7 @@ const CartItem = ({ item }) => {
             // increase={increase} decrease={decrease} 
             />
             <h5 className="subtotal">{formatPrice(price * amount)}</h5>
-            <button type='button' className='remove-btn' onClick={() => removeItem(id)}>
+            <button type='button' className='remove-btn' onClick={() => removeThis(id)}>
                 <FaTrash />
             </button>
         </Wrapper>

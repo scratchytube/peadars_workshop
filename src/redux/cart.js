@@ -50,6 +50,14 @@ const cartSlice = createSlice({
             //     return {...state,cart:[...state.cart, newItem]}
             // }
         },
+        removeCartItem(state, action) {
+            const tempCart = state.cart.filter((item) => item.id !== action.payload)
+            state.cart = tempCart
+        },
+        removeProductOrder(state, action) {
+            const tempCart = state.productOrdersArray.filter((item) => item.product_id !== action.payload)
+            state.productOrdersArray = tempCart
+        },
         clearWholeCart(state) {
             state.cart = []
         },
@@ -94,5 +102,5 @@ const cartSlice = createSlice({
     }
 })
 
-export const { addToCart, myProductOrders, defaultCart, cartOrderId, clearWholeCart, countCartTotals } = cartSlice.actions
+export const { addToCart, removeCartItem, removeProductOrder, myProductOrders, defaultCart, cartOrderId, clearWholeCart, countCartTotals } = cartSlice.actions
 export default cartSlice.reducer
