@@ -11,11 +11,11 @@ const AboutPage = () => {
                 <img src={workshopImg} alt="workshop" />
                 <article>
                     <div className="title">
-                        <h2>our story</h2>
+                        <h2>my story</h2>
                         <div className="underline"></div>
                     </div>
                     <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo expedita iste nisi incidunt porro, laborum assumenda quam vero accusantium accusamus optio deserunt laudantium ullam cupiditate similique debitis ex suscipit, facere eveniet quaerat fugiat reprehenderit eaque. Totam similique ex praesentium sapiente ea assumenda culpa, quidem nobis laudantium quam placeat laboriosam facilis.
+                        I'm a mechanical engineer by degree and have recently retired. I've started woodturning as a hobby and find it very rewarding. Each of the pieces I produce are unique, however upon request I can somewhat duplicate a design. Contact my email, ::email:: for custom orders/consultations.
                     </p>
                 </article>
             </Wrapper>
