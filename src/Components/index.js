@@ -14,6 +14,7 @@ import ProductList from './ProductList'
 import CartContent from './CartContent'
 import Login from './Login'
 import Signup from './Signup'
+import Loading from './Loading'
 
 
 export {
@@ -33,4 +34,5 @@ export {
     CartContent,
     Login,
     Signup,
+    Loading,
 }

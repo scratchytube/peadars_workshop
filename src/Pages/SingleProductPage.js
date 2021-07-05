@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { singleProduct } from '../redux/product'
 import styled from 'styled-components'
-import { ProductImages, PageHero, AddToCart } from '../Components'
+import { ProductImages, PageHero, AddToCart, Loading } from '../Components'
 import { formatPrice } from '../utils/helpers'
 
 function SingleProductPage() {
@@ -31,7 +31,7 @@ function SingleProductPage() {
         })
     }, [params.id, dispatch])
 
-    if (!isLoaded) return <h2>Loading...</h2>
+    if (!isLoaded) return <Loading />
 
     return (
         <Wrapper>
