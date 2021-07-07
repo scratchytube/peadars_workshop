@@ -17,6 +17,8 @@ import {
   PrivateRoute 
 } from './Pages'
 
+console.log(process.env.REACT_APP_RAILS_URL)
+
 const App = () => {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
