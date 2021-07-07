@@ -58,7 +58,8 @@ const App = () => {
 
   // featured products fetch
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_RAILS_URL}/products`)
+    fetch('stormy-stream-64596.herokuapp.com/api/v1/products')
+    // fetch(`${process.env.REACT_APP_RAILS_URL}/products`)
     .then((r) => r.json())
     .then((featuredProductsArray) => {
       dispatch(featuredProductsFetch(featuredProductsArray))
