@@ -41,7 +41,7 @@ const Signup = ({setShowLogin }) => {
     }
 
     const createCart = theNewUser => {
-        fetch('http://localhost:3000/api/v1/orders', {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/orders`, {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json',
