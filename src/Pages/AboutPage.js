@@ -15,7 +15,7 @@ const AboutPage = () => {
                         <div className="underline"></div>
                     </div>
                     <p>
-                        I'm a mechanical engineer by degree and have recently retired. I've started woodturning as a hobby and find it very rewarding. Each of the pieces I produce are unique, however upon request I can somewhat duplicate a design. Contact my email, ::email:: for custom orders/consultations.
+                        I'm a mechanical engineer by degree and have recently retired. I've started woodturning as a hobby and find it very rewarding. Each of the pieces I produce are unique, however upon request I can somewhat duplicate a design. Contact my email, ::email:: for custom orders/consultations. {process.env.REACT_APP_TEST}
                     </p>
                 </article>
             </Wrapper>
