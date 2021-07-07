@@ -25,7 +25,7 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem("token")
     if (token) {
-      fetch('http://localhost:3000/api/v1/me', {
+      fetch(`${process.env.REACT_APP_RAILS_URL}/me`, {
         headers: {
           Authorization: `Bearer ${token}`
         },
@@ -40,7 +40,7 @@ const App = () => {
 
   // products fetch
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/products')
+    fetch(`${process.env.REACT_APP_RAILS_URL}/products`)
     .then((r) => r.json())
     .then((productsArray) => {
       dispatch(allProducts(productsArray))
@@ -49,7 +49,7 @@ const App = () => {
 
   // filtered products
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/products')
+    fetch(`${process.env.REACT_APP_RAILS_URL}/products`)
     .then((r) => r.json())
     .then((filteredArray) => {
       dispatch(filteredProducts(filteredArray))
@@ -58,7 +58,7 @@ const App = () => {
 
   // featured products fetch
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/products')
+    fetch(`${process.env.REACT_APP_RAILS_URL}/products`)
     .then((r) => r.json())
     .then((featuredProductsArray) => {
       dispatch(featuredProductsFetch(featuredProductsArray))
@@ -69,7 +69,7 @@ const App = () => {
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        fetch(`http://localhost:3000/api/v1/orders/`)
+        fetch(`${process.env.REACT_APP_RAILS_URL}/orders`)
         .then(r => r.json())
       .then(misterCart => {
         const currentCart = [...misterCart]

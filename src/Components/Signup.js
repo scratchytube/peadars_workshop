@@ -19,7 +19,7 @@ const Signup = ({setShowLogin }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        fetch('http://localhost:3000/api/v1/signup', {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": 'application/json',

@@ -34,7 +34,7 @@ const AddToCart = ({ product }) => {
                 order_id: cartId,
                 product_id: product.id
             }
-    fetch('http://localhost:3000/api/v1/productorders', {
+    fetch(`${process.env.REACT_APP_RAILS_URL}/productorders`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

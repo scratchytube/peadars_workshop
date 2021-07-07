@@ -39,7 +39,7 @@ const CartItem = ({ item }) => {
         const objectToDelete = productOrders.filter((item) => item.product_id === id)
         const deleteThisId = objectToDelete[0].id
         
-        fetch(`http://localhost:3000/api/v1/productorders/${deleteThisId}`, {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/productorders/${deleteThisId}`, {
             method: 'DELETE',
         })
         .then((r) => r.json())

@@ -17,7 +17,7 @@ const Login = ({setShowLogin}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:3000/api/v1/login', {
+        fetch(`${process.env.REACT_APP_RAILS_URL}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": 'application/json',
@@ -39,7 +39,8 @@ const Login = ({setShowLogin}) => {
     }
 
     const setDefaultCart = (loggedInUser) => {
-        fetch(`http://localhost:3000/api/v1/orders/`)
+        
+        fetch(`${process.env.REACT_APP_RAILS_URL}/orders`)
         .then(r => r.json())
         .then(kingCart => {
             const cartCart = [...kingCart]

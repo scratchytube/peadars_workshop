@@ -23,7 +23,7 @@ function SingleProductPage() {
     
     // single product fetch
     useEffect(() => {
-        fetch(`http://localhost:3000/api/v1/products/${params.id}`)
+        fetch(`${process.env.REACT_APP_RAILS_URL}/products/${params.id}`)
         .then((r) => r.json())
         .then(singleServing => {
             dispatch(singleProduct(singleServing))
