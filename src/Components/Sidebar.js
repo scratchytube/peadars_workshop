@@ -21,7 +21,7 @@ const Sidebar = () => {
         <SidebarContainer>
             <aside className={`${ sidebar ? `sidebar show-sidebar` : 'sidebar' }`}>
                 <div className="sidebar-header">
-                    <img src={logo} className="logo" alt="peaders workshop" />
+                    <img src={logo} className="logo" alt="peadars workshop" />
                     <button className="close-btn" type='button' onClick={handleToggleSideBar}>
                         <FaTimes />
                     </button>

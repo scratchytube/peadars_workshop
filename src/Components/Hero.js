@@ -10,7 +10,7 @@ const Hero = () => {
             <article className="content">
                 <h1>Welcome</h1>
                 <p>
-                    Hi, my name is Peader. I'm Irish living in Texas with my beautiful family. I've started woodturning as a retirement activity. Slainte!
+                    Hi, my name is Peadar. I'm Irish living in Texas with my beautiful family. I've started woodturning as a retirement activity. Slainte!
                 </p>
                 <Link to='/products' className='btn hero-btn'>
                     Shop

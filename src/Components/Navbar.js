@@ -20,7 +20,7 @@ const Navbar = () => {
             <div className="nav-center">
                 <div className="nav-header">
                     <Link to='/'>
-                        <img src={logo} alt="peaders workshop" />
+                        <img src={logo} alt="peadars workshop" />
                     </Link>
                     <button type="button" className='nav-toggle' onClick={handleToggleSideBar} ><FaBars/></button>
                 </div>
